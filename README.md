@@ -8,7 +8,7 @@ Each practice task lives in its own folder with its own README describing the go
 
 | # | Task | Topic | Status |
 |---|------|-------|--------|
-| | _Coming soon_ | | |
+| 01 | [Chat](01-chat/) | Multi-turn chat: conversation history, token usage, temperature, cost | Done |
 
 ## Structure
 

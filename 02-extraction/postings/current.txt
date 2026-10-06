@@ -1,0 +1,51 @@
+Software Engineer 
+
+New York, NY About the job
+SOFTWARE ENGINEER
+
+Current is a leading consumer fintech platform transforming financial access for everyday Americans with over 6 million members. We provide access to financial solutions that seamlessly work together to solve the needs of our members and enable all Americans to build better financial futures. Based in NYC, our results-driven environment drives us to build better products, grow faster and empower everyone on our team to have an impact on our business and mission to improve financial outcomes.
+
+Current’s Engineering team is dedicated to building our products and infrastructure. With our applications running on Google Cloud Kubernetes Engine, we support a proprietary banking core that can scale to handle millions of transactions a day. Our stack includes MongoDB and Spanner for persistence, Pub/Sub for asynchronous event processing, Dataflow for data transformation paired with BigQuery and Google Cloud Storage for data storage and analytics. Our backend services are written in Java and our data pipelines are built in Scala.
+
+We work across a broad set of domains, including user-facing products like liquidity offerings and reward programs, infrastructure for machine learning and experimentation, real-time fraud detection and identity protection, and large-scale transaction processing across multiple payment rails.
+
+We are looking for a Software Engineer to join our team in New York. This role has a salary range of $150,000 - $200,000. You will work alongside senior engineers to build and improve backend services, contribute to system design discussions, and deliver features that impact millions of members. The ideal candidate should have a background in backend development and experience working with cloud-hosted services. This person should be eager to grow, comfortable taking ownership of well-scoped projects, and motivated to work in a fast-paced environment.
+
+What To Expect
+
+Taking ownership of well-scoped features and delivering them from implementation through production
+Building and maintaining backend services within a distributed microservices architecture
+Contributing to data-intensive applications and gaining exposure to cutting-edge techniques in:
+Real-time transaction decisioning
+Stream-processing
+Machine learning
+Participating in code reviews and contributing to a culture of engineering quality
+Contributing to engineering best practices including testing, monitoring, and documentation
+Collaborating with product data and business stakeholders to ship features that directly impact Current’s members
+About You
+
+2+ years of software engineering experience, with backend experience using a JVM language, preferably Java
+Bachelor’s degree in Computer Science, Electrical Engineering, or related field
+Strong foundation in algorithms, data structures, and object-oriented design principles
+Experience with RDBMS or NoSQL databases
+Strong problem-solving and communication skills
+Experience with cloud-hosted services, like AWS or GCP is a plus
+
+Benefits
+
+Competitive salary
+Meaningful equity in the form of stock options
+401(k) plan
+Discretionary performance bonus program
+Biannual performance reviews
+Medical, Dental and Vision premiums covered at 100% for you and your dependents
+Flexible time off and paid holidays
+Generous parental leave policy
+Commuter benefits
+Fitness benefits
+Healthcare and Dependent care FSA benefit
+Employee Assistance Programs focused on mental health
+Healthcare advocacy program for all employees
+Access to mental health apps
+Team building activities
+Our modern NYC based office with open floor plan, stocked kitchen, and catered lunches

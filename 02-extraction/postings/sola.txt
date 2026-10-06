@@ -1,0 +1,57 @@
+Software Engineer, Backend
+
+New York, NY
+About the job
+Join Us in Building the Future of Digital Work
+
+At Sola, we’re transforming the way work is done. We’re developing AI agents that make powerful automation effortless, enabling any user to record a workflow and instantly scale it up to millions of executions.
+
+Sola today powers enterprise workflows in Fortune 100 companies, with a horizontal platform that works across healthcare, finance, legal, logistics, and more. We’ve raised $21M in funding from a16z, Conviction (Sarah Guo), and Y Combinator, and are looking for passionate engineers to help us continue to scale.
+
+If you’re interested in being on the forefront of agentic automation, we’d love to hear from you!
+
+What To Expect
+
+We‘re solving one of the most interesting problems in AI today: building reliable, deterministic execution on top of non-deterministic AI models.
+
+As a backend engineer, you’ll work directly on our AI orchestration systems to enable reliable, scalable, durable workflow execution across desktop and web. You’ll collaborate with our frontend team to surface that to the user in a way that is easy and intuitive.
+
+This is an opportunity to join a small, tight-knit team at our HQ in NYC. We believe the best work happens in person, especially at the early stage, and you’ll have the opportunity to learn from the founding team and early engineers to help shape the future of the company.
+
+What You'll Do
+
+Own systems that automate repetitive work across browser and desktop, handling concurrency, reliability, and observability at scale (millions of executions per month)
+Collaborate with our CTO and ML research partners to bring state-of-the-art agentic workflows into production
+Architect and build the backend systems that power our visual workflow builder – a Figma-style interface used daily by non-technical ops teams
+Design and implement services that integrate with Sola AI models to generate workflows, gain insights, and drive adaptive execution logic
+
+What we're looking for 
+
+You thrive in a fast-paced environment where you can ship fast and solve problems end-to-end
+You’ve built and operated distributed systems at scale, with a high standard for reliability, observability, and performance
+You’re proficient across all layers on the backend, from infra to CI/CD to DB to backend service architecture
+You’re fluent with the latest AI coding tools and are always looking for ways to move faster
+You’re open to working 5 days a week out of our office in NYC (we’ll cover relocation!)
+
+You might excel if
+
+You have hands-on experience operating at an early stage startup where ownership and execution in the face of ambiguity were essential
+You’re an expert in some or all of our stack: TypeScript and Python, Kubernetes, Temporal, Postgres, DynamoDB
+You’ve worked directly on AI systems or in ML ops at scale
+You’re ambitious, creative, and a great communicator
+
+Why Sola 
+
+$21M raised from top-tier VCs (a16z, Conviction, YCombinator) and growing incredibly fast
+Proven traction with Fortune 100 customers, with horizontal applicability across a variety of domains (including finance, healthcare, legal, logistics, and more)
+Leading-edge agentic AI tech, solving deep problems in partnership with the AI labs (ex. Anthropic, AWS AGI Lab)
+Small team, early stage, with an opportunity for outsized impact on the company’s future
+Work closely with founders Jessica Wu (ex-Citadel, Thrive Capital) and Neil Deshmukh (MIT Quest for Intelligence Lab), alongside David Fullerton (ex-CTO Heap, Stack Overflow)
+
+Compensation & Benefits
+
+Sola offers competitive salary plus meaningful equity at Series A stage. Exact compensation is based on experience and level.
+
+We offer comprehensive medical, dental, and vision benefits, 401(k) matching, daily meals together in the office, flexible PTO (4 weeks per year), and relocation support for candidates not already based in NYC.
+
+Compensation Range: $150K - $300K

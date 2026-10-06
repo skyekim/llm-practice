@@ -1,0 +1,40 @@
+Backend Engineer
+
+New York, NY
+About the job
+At Guac, we're solving grocery food waste with AI. We forecast exactly how much of each product will sell, helping grocery retailers order and produce the perfect amount of inventory — and we're building AI-native tools that put those forecasts directly into the hands of store operators and buyers.
+The grocery industry is enormous (it accounts for 4% of GDP) — and grocery food waste is a huge cost to grocers' bottom lines, but also to our planet.
+Today, we're working with major supermarket chains in the US and Canada, and we've scaled to 7-figures in ARR. We're backed by leading investors including Y Combinator, 1984 Ventures, Collaborative Fund, and angels from Open AI, Instacart, and Citadel Securities.
+We've brought together an exceptional team from Palantir, BCG, Oxford, Cambridge, and MIT to solve intellectually challenging problems and tackle food insecurity and waste with technology.
+We're looking for talented engineers in NYC to join our mission.
+About the Role
+As a Backend Engineer at Guac, you'll have real impact and ownership over technical decisions, strategy, and product direction. Your responsibilities will include:
+Design and build robust backend services that power mission-critical ordering and production planning products
+Build efficient ETL pipelines to handle billions of rows of data, multiple times per day
+Build AI-powered tools and agents for internal and customer use — exposing our data and forecasting systems via MCP servers, tool-use APIs, and similar protocols so that LLMs can reason over and act on grocery operations data
+Collaborate directly with customers' technical teams to understand and integrate with their IT infrastructure
+Help define how we leverage LLMs across the product surface, from agentic workflows to natural-language interfaces over our forecasts
+
+About You
+3+ years of relevant software engineering experience
+Strong proficiency in Python and associated frameworks (FastAPI or similar)
+AI-native: you use Claude Code, Cursor, or similar AI coding tools daily and ship significantly faster because of it
+Hands-on experience building with LLMs — tool use / function calling, RAG, agents, or evals — and familiarity with MCP or similar protocols for connecting models to data and systems
+Experience designing and operating data-intensive backend systems (ETL, large-scale pipelines, distributed processing)
+(Bonus) Experience in customer-facing technical roles (e.g. forward deployed engineer)
+(Bonus) Experience deploying LLM-powered features to production at scale
+
+What We Offer
+First-hand experience building an early-stage startup
+Compensation: $150k–$250k base + competitive equity
+Fully employer-paid healthcare (medical, dental, and vision)
+Unlimited vacation days
+Fully covered food expenses in the office (lunch/dinner)
+Free Equinox membership
+
+Our Tech Stack
+Languages & Frameworks: Python, FastAPI, Dagster, Dask
+Cloud & Infrastructure: GCP, Postgres, BigQuery, Terraform, Docker
+AI: MCP servers, Anthropic/OpenAI APIs, agentic tooling
+
+Note: this is an in-person 5 days a week, full time job in NYC.

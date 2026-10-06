@@ -1,0 +1,63 @@
+Software Engineer - Back End (New York)
+
+New York, NY
+About the job
+About Edra
+
+Edra is solving one of the hardest problems in enterprise AI: AI models are generic but company processes are specific. We build AI agents that learn how processes actually run, and then run their operations.
+
+We're a Series A startup, backed by Sequoia and other leading VC firms, led by Co-Founders who created and led Forward Deployed AI Engineering at Palantir, and we're growing our team in New York and London. We're a deeply technical team of engineers, AI researchers, and strategists with a high bar for talent and a shared belief that exceptional people are the foundation of everything great we'll build.
+
+The Role
+
+We're looking for Backend Engineers who care deeply about the craft of building software: strong typing, thoughtful API design, robust data modeling, and systems that are a pleasure for other engineers to work with. You won't be building AI models, you'll be building everything around them: the platform, workflows, interfaces, integrations, and observability that make our AI useful in the real world. As an early engineer at Edra, you'll shape not just the product but the engineering culture, tooling choices, and technical foundations the company is built on.
+
+We work deliberately and deeply. There's no separation between "building it" and "shipping it"--you'll go from whiteboard to production and own the outcome. We'd rather build something thoughtfully than ship something fragile, and we treat velocity and quality as complementary, not competing.
+
+What You'll Do
+
+Design and build platform systems in Python (Fast API), from API contracts to database schema and infrastructure
+Build and maintain connectors, integrations, and data pipelines that connect our platform to external systems
+Build internal libraries, tooling, and interfaces that make the rest of the engineering team more productive
+Own your work fully: gather context, manage dependencies, and drive tasks to completion without a product manager handing you tickets
+Wear multiple hats across the stack–you might design a schema in the morning, build the API layer in the afternoon, and debug a deployment issue before end of day
+Participate in weekly product meetings, understand how customers and forward deployed engineers use what you build, and shape what gets built next
+Collaborate daily with a small, high-caliber team of engineers and AI specialists
+Have direct influence on technical direction: choose tools, set patterns, and establish conventions the team will build on for years
+
+What We’re Looking For
+
+3+ years of experience in software engineering (but a computer science degree is not necessarily required)
+A love of writing Python and/or TypeScript to a genuinely high standard–well-modeled, well-typed, and well-documented. Strong typing feels like a superpower, not a chore
+Experience building libraries, SDKs, or internal tooling that made other developers' lives easier (and you’ve enjoyed it)
+You light up when designing a clean database schema and take real pride in getting data models right
+You're at your best when you own a problem end to end — comfortable with ambiguity and energized by turning a vague problem into a well-scoped solution
+You're drawn to building foundational systems from scratch — greenfield work where your decisions compound over time excites you
+
+Don't meet all of the above? We'd still love to hear from you. We're looking for exceptional people with unique skills and interests, and we know that great people have different backgrounds and skillsets. If your primary interest is building agentic systems, working with LLMs, or doing applied ML, check out our AI Engineering role–it might be a better fit.
+
+Learn More About Edra
+
+Watch our Series A announcement video
+Read our blog post from our launch
+Learn more about what we're building
+Our founders point of view on the market
+
+Compensation & Benefits
+
+Edra offers generous compensation and benefits in both New York & London:
+
+Competitive base salary & meaningful equity 
+Top tier health, dental, & vision plans:
+Top plans with 100% premium coverage in the US (and a One Medical membership)
+Private medical & dental coverage in the UK 
+Flexible paid time off 
+Lunch provided in office most days, snacks & drinks too
+A stipend to set up your workspace
+A Few Details
+
+We work together in person five days a week from our offices in the West Village (New York) and Holborn (London).
+
+Edra is an equal opportunity employer and we encourage applications from individuals of all backgrounds. Edra does not discriminate on the basis of race, color, religion, sex, national origin, age, disability, genetic information, marital status, sexual orientation, gender identity, veteran status, or any other legally protected characteristic.
+
+Compensation Range: $200K - $300K

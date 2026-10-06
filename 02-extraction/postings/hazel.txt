@@ -1,0 +1,54 @@
+Software Engineer
+
+New York, NY About the job
+About Hazel
+
+Hazel is the AI coworker for consumer brands. We connect to a brand's live data — Shopify, Klaviyo, Amazon, Meta, and dozens of others — and turn it into a teammate operators talk to every day. Ask "why did repeat purchase rate drop last week?" and 10 seconds later you get an answer, cited from live data.
+
+Hazel also takes action herself, proactively flagging issues and making changes directly in Shopify and the other systems she connects to, on the way to running full playbooks autonomously.
+
+We've raised more than $2M, are rapidly scaling, and serve some of the biggest consumer brands including Bogg Bag, Ultra, and OneSkin. You'll join a small, senior engineering team working directly with the founders.
+
+What You'll Work On
+
+In your first 60 days, you'll be extending Hazel's action layer — the writes back into the systems she connects to. Think: creating product bundles in Shopify, launching A/B tests in Klaviyo, and the human-in-the-loop scaffolding that makes all of it safe.
+
+Beyond that:
+
+Full-stack product features across TypeScript/React + Go services
+AI agent workflows: streaming LLM responses, multi-step tool use, approvals
+Integrations across Shopify, Klaviyo, Meta, Amazon, and more, both reading and writing
+
+You'll work directly with the founders and customers. Code you ship today is in front of operators tomorrow.
+
+Who We're Looking For
+
+You've shipped a production LLM feature to real users. 
+You've owned an API at scale: query optimization, schema design, picking the right tool for the workload. 
+Strong TypeScript experience
+You use coding agents to do the work of a much larger team, and you can tell us where they helped and where they made things worse. 
+You care deeply about how the product ergonomics and UX. 
+Former or aspiring founders
+
+This isn't for you if…
+
+You want product specs handed to you. Your manager is the customer. 
+You're low agency
+You aren't excited about 
+
+Comp & Benefits
+
+$150–250K base
+0.15–0.5% equity
+Top-tier health, dental, vision
+Hybrid in NYC (ask about our pool table)
+
+How We Hire
+
+15-min intro
+Founder call
+Technical interview
+Onsite — meet the team
+Offer
+
+Compensation Range: $150K - $250K

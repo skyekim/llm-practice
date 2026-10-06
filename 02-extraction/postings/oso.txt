@@ -1,0 +1,75 @@
+Software Engineer
+
+New York, NYAbout the job
+Old problem, new $25B+ market
+
+Companies like AWS, Stripe, and Twilio have shown that if a technology isn't core to your value proposition, you should offload it. Still, every engineering team builds and rebuilds one piece: authorization, how you control who has access to what in your app. We intend to change that.
+
+We see a world where developers never roll their own authorization again, and instead say, "Just use Oso" – the same way you might say, "Oh, you should just use Postgres for that." In doing so, we're creating the $25B+ authorization market.
+
+Why Oso?
+
+We have the lead – in traction, capital, and team.
+
+Traction: Oso is used by thousands of companies from startups to the Fortune 500, like Wayfair, ProductBoard, Vanta, Brex, Verizon, ZoomInfo, and Duolingo. 
+Capital: We're backed by the world’s best investors, including Sequoia, Felicis, and a standout group of infrastructure founders and operators: Olivier Pomel (Founder, Datadog), Dev Ittycheria (CEO, MongoDB), Armon Dadgar (Founder, HashiCorp), Edith Harbaugh (Founder, LaunchDarkly), Guy Podjarny (Founder, Snyk), Paul Copplestone (Founder, Supabase), Christina Cacioppo (Founder, Vanta), and Calvin French-Owen (Founder, Segment). 
+Team: We've spent 5+ years going deep on the domain. We've met with thousands of engineering teams and know more about this problem than anyone. And we have two of the best developer go-to-market leaders on earth who have done it before at MongoDB and Snyk. 
+
+Why now?
+
+We're at an inflection point. What it takes to get from where we are today to a world where developers say “Just use Oso” is going to be different. And we see that.
+
+The opportunity is for you to join at this inflection point, in a role that’s bigger and different than usual.
+
+What you'll do
+
+Experiment, design, and build UIs, flows, features, and layers of abstraction that decrease the amount of work our users have to do. Lots of devex
+Expand use case coverage of our core authorization service
+Build and operate infrastructure for our highly available and low latency cloud service
+
+Plus, help build a company and community from the ground up by wearing other hats, including:
+
+Writing documentation and blog posts to excite and support new users
+Engaging with users through support channels (e.g., Slack) to help them with their problems
+
+Here are examples of things we've worked on:
+
+Built a visual policy builder for our declarative policy language, Polar
+Built an interactive debugger, called Explain, to help users understand why authorization requests succeed or fail
+Implemented incremental forward chaining to cache authorization responses for deeply nested recursive queries
+
+Who you are
+
+You're ambitious. You want to win big. You can't stand to be around anything but execution at the highest level. You have an inner motor to move fast. 
+You're an owner. You are accountable to results over the process. You see yourself not just as an engineer, but also as an owner of the company. 
+You're resilient. Building a startup is not for the faint of heart. You see the challenges as not just normal, but actually desirable. 
+You want to grow, and help others grow. You self-reflect often. You give feedback, and you seek it out. 
+You prioritize the customer above all else. You want to understand our users' world and prioritize solving their authorization problems above everything else. 
+
+Requirements
+
+You have 4+ years of experience as a software engineer
+You have worked at a startup or in a similar environment
+You have worked on developer experience and/or user experience
+You can program at different levels of the stack – i.e., frontend and backend, web app to lower level systems
+
+Benefits
+
+In addition to cash compensation, Oso offers a Total Rewards package that includes equity grants, health benefits, and more:
+
+Competitive health, dental, and vision coverage
+Mental healthcare to all employees and anyone in their family through Spring Health
+Unlimited access to financial advisors through Northstar
+Equity Package
+Unlimited paid time off (PTO)
+Paid parental leave
+Flexible work options
+One Medical Membership
+Quarterly hackathons... and prizes!
+Free team lunches every month
+
+The starting salary for this role is between $140,000-$220,000/year plus equity. Your exact offer will vary based on a number of factors including experience level, skillset, market location, and balancing internal equity relative to peers at the company.
+
+A note on titles: We have no titles on our engineering team. Everyone is an Engineer. Compensation is commensurate with contribution. For more background, read this blog post.
+
+Oso is an equal opportunity employer. All applicants will be considered for employment regardless of race, color, national origin, religion, sex, age, disability, sexual orientation, gender identity, veteran or disability status.

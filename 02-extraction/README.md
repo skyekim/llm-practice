@@ -52,8 +52,9 @@ list of allowed skill names, should help.
 ### Consistency between runs
 
 I ran approach A twice on the same 11 postings and compared the results.
-I checked the values against the posting text and found no invented
-values in either run.
+I checked the values against the posting text. The factual fields matched
+the postings, but one skill was invented: Giga's list included "Python",
+which its posting never mentions (see approach B's data quality below).
 
 Fields with one clear answer were identical both times: company, title,
 location, years of experience, salary, and `ai_company`.

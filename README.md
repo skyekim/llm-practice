@@ -9,6 +9,7 @@ Each practice task lives in its own folder with its own README describing the go
 | # | Task | Topic | Status |
 |---|------|-------|--------|
 | 01 | [Chat](01-chat/) | Multi-turn chat: conversation history, token usage, temperature, cost | Done |
+| 02 | [Extraction](02-extraction/) | Structured extraction: Pydantic validation, JSON in the prompt vs. forced tool call, data quality | Done |
 
 ## Structure
 

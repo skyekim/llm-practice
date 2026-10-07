@@ -108,7 +108,7 @@ The skill lists still had problems:
   but OpenAI's list was all lowercase and Sola's was mixed
 - Omissions: Mistral's posting lists Prometheus, Grafana, and Datadog,
   but B left them out (approach A included them)
-- [Giga: describe what you found when you checked giga.txt for "Python"]
+- Giga's posting did not include Python, but A included it in the results whereas B did not. 
 - Improvements: Hazel's integrations were labeled as integrations
   ("Shopify integrations") instead of looking like skills
 

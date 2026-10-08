@@ -1,0 +1,80 @@
+{
+  "passed": 3,
+  "total": 3,
+  "cost": 0.014462999999999998,
+  "seconds": 14.43,
+  "cases": [
+    {
+      "id": "kubernetes",
+      "category": "structured",
+      "question": "Which postings ask for Kubernetes?",
+      "passed": true,
+      "failures": [],
+      "answer": "Four postings ask for Kubernetes:\n\n1. **OpenAI** - Software Engineer, Observability (Salary: $266,000 - $445,000)\n2. **Sola** - Software Engineer, Backend (Salary: $150,000 - $300,000)\n3. **Lorum** - Software Engineer (Backend) (No salary listed)\n4. **Mistral** - Software Engineer, Backend (No salary listed)",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "skill": "kubernetes"
+          },
+          "result": "[{\"id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"salary_min\": 266000, \"salary_max\": 445000}, {\"id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"salary_min\": 150000, \"salary_max\": 300000}, {\"id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"salary_min\": null, \"salary_max\": null}, {\"id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"salary_min\": null, \"salary_max\": null}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.0046289999999999994,
+      "seconds": 2.66
+    },
+    {
+      "id": "visa",
+      "category": "text",
+      "question": "Which postings offer visa sponsorship?",
+      "passed": true,
+      "failures": [],
+      "answer": "Based on the search results, **Bevel** offers visa sponsorship. Their Backend Engineer posting explicitly states \"Visa sponsorship if applicable\" in their benefits [chunk 9].\n\nThe other postings in the results don't mention visa sponsorship in the text returned. If you'd like me to check specific postings for visa sponsorship details, I can search those individually.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "visa sponsorship"
+          },
+          "result": "[{\"chunk_id\": 9, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.322, \"text\": \"Benefits\\n\\nExciting work environment\\nCompetitive salary & equity\\nHealth, dental, and vision insurance\\nCommuter benefits\\nPaid lunch and dinner when in the office\\nWork-life balance\\nPet-friendly office in Chelsea\\nUnlimited PTO\\n401k plan\\nVisa sponsorship if applicable\"}, {\"chunk_id\": 170, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.285, \"text\": \"Sola today powers enterprise workflows in Fortune 100 companies, with a horizontal platform that works across healthcare, finance, legal, logistics, and more. We\\u2019ve raised $21M in funding from a16z, Conviction (Sarah Guo), and Y Combinator, and are looking for passionate engineers to help us continue to scale.\"}, {\"chunk_id\": 124, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.266, \"text\": \"What we offer\\nWe offer a comprehensive benefits package designed to support your well-being, growth, and work-life balance. Benefits vary by country and may include healthcare coverage, parental leave, retirement plans, relocation support, wellness programs, meal and transportation allowances, and other location-specific perks.\"}, {\"chunk_id\": 84, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.23, \"text\": \"How We Hire\\n\\n15-min intro\\nFounder call\\nTechnical interview\\nOnsite \\u2014 meet the team\\nOffer\\n\\nCompensation Range: $150K - $250K\"}, {\"chunk_id\": 18, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.217, \"text\": \"Collaborating with product data and business stakeholders to ship features that directly impact Current\\u2019s members\\nAbout You\"}, {\"chunk_id\": 62, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.213, \"text\": \"We've brought together an exceptional team from Palantir, BCG, Oxford, Cambridge, and MIT to solve intellectually challenging problems and tackle food insecurity and waste with technology.\\nWe're looking for talented engineers in NYC to join our mission.\\nAbout the Role\"}, {\"chunk_id\": 104, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.211, \"text\": \"Benefits\\nOpportunity to travel (if applicable)\\nFlexible vacation policy\\nPrivate Healthcare\\nEmployee stock ownership (ESOP)\\nFlexible working and autonomy\\nPay it forward days - we offer 2 annual pay it forward days where you can take time to volunteer for a charitable cause that is important to you.\"}, {\"chunk_id\": 142, \"posting_id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"similarity\": 0.21, \"text\": \"OpenAI Global Applicant Privacy Policy\\n\\nAt OpenAI, we believe artificial intelligence has the potential to help people solve immense global challenges, and we want the upside of AI to be widely shared. Join us in shaping the future of technology.\\n\\nCompensation Range: $266K - $445K\"}, {\"chunk_id\": 148, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.207, \"text\": \"Capital: We're backed by the world\\u2019s best investors, including Sequoia, Felicis, and a standout group of infrastructure founders and operators: Olivier Pomel (Founder, Datadog), Dev Ittycheria (CEO, MongoDB), Armon Dadgar (Founder, HashiCorp), Edith Harbaugh (Founder, LaunchDarkly), Guy Podjarny (Founder, Snyk), Paul Copplestone (Founder, Supabase), Christina Cacioppo (Founder, Vanta), and Calvin French-Owen (Founder, Segment). \"}, {\"chunk_id\": 141, \"posting_id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"similarity\": 0.207, \"text\": \"We are committed to providing reasonable accommodations to applicants with disabilities, and requests can be made via this link.\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.005575999999999999,
+      "seconds": 9.83
+    },
+    {
+      "id": "mistral-salary",
+      "category": "unanswerable",
+      "question": "What's the salary range for the Mistral posting?",
+      "passed": true,
+      "failures": [],
+      "answer": "The Mistral posting for \"Software Engineer, Backend\" doesn't list a salary range\u2014both the minimum and maximum are not specified in the posting.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Mistral"
+          },
+          "result": "[{\"id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"salary_min\": null, \"salary_max\": null}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.004258,
+      "seconds": 1.94
+    }
+  ]
+}

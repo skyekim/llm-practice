@@ -1,7 +1,12 @@
 """Exercise 5, steps 2-5: a chat loop around the tool loop, keeping one history
 for the session, with step, cost, and time limits, confirmation before any
 tool that changes data, a summary of each session remembered in the next, and
-every step logged to trace.jsonl."""
+every step logged to trace.jsonl.
+
+Exercise 6, step 1: the tool loop is run_agent(), callable from code. By
+default it runs without memory and denies every write, so evals can't change
+the applications table; the chat in main() is a thin wrapper around it.
+"""
 import json
 import time
 from datetime import date
@@ -69,14 +74,16 @@ def build_system(memories: list) -> str:
 class TurnStopped(Exception):
     """A limit stopped the turn before the model gave a final answer."""
 
-    def __init__(self, reason: str, cost: float):
-        super().__init__(reason)
-        self.cost = cost  # still spent, so main() adds it to the session total
-
 
 def cost_of(usage) -> float:
     return (usage.input_tokens * INPUT_PRICE_PER_MTOK
             + usage.output_tokens * OUTPUT_PRICE_PER_MTOK) / 1_000_000
+
+
+def deny_all(block) -> bool:
+    """The default for run_agent: every CONFIRM_TOOLS call is declined, so
+    nothing is written, but the attempt still shows up in tool_calls."""
+    return False
 
 
 def confirm(block) -> bool:
@@ -98,8 +105,9 @@ def confirm(block) -> bool:
         return False
 
 
-def run_tool(block, turn: int) -> dict:
-    """Run one tool_use block and return the matching tool_result block."""
+def run_tool(block, turn: int, approve, tool_calls: list) -> dict:
+    """Run one tool_use block, record it in tool_calls, and return the matching
+    tool_result block. approve(block) decides whether a CONFIRM_TOOLS call runs."""
     fn = TOOL_FUNCTIONS.get(block.name)
     confirmed = None  # True or False only for CONFIRM_TOOLS
     duration_ms = None  # time in the tool itself, not waiting for y/n
@@ -108,7 +116,7 @@ def run_tool(block, turn: int) -> dict:
     else:
         try:
             if block.name in CONFIRM_TOOLS:
-                confirmed = confirm(block)
+                confirmed = approve(block)
             if confirmed is False:
                 content = ("The user said no at the confirmation prompt, so nothing was "
                            "updated. This is not a system error. Don't retry; tell the "
@@ -133,58 +141,102 @@ def run_tool(block, turn: int) -> dict:
     trace("tool_call", turn=turn, tool_use_id=block.id, name=block.name,
           input=block.input, result=content, is_error=is_error,
           duration_ms=duration_ms, confirmed=confirmed)
+    tool_calls.append({"name": block.name, "input": block.input, "result": content,
+                       "is_error": is_error, "confirmed": confirmed})
     return {"type": "tool_result", "tool_use_id": block.id,
             "content": content, "is_error": is_error}
 
 
-def ask(messages: list, system: str, turn: int) -> tuple[str, float]:
+def ask(messages: list, system: str, turn: int, approve, run: dict) -> str:
     """Answer the last question in messages, calling tools until the model stops
-    asking for them. Appends every reply and tool result to messages.
+    asking for them. Appends every reply and tool result to messages, and
+    keeps run's steps, cost, and tool_calls up to date as it goes, so they're
+    right even when this raises.
 
-    Returns (answer, cost). Raises TurnStopped if MAX_ROUNDS or
-    MAX_COST_PER_TURN runs out first. An APIError or KeyboardInterrupt is
-    re-raised with the cost spent so far as e.turn_cost.
+    Returns the answer. Raises TurnStopped if MAX_ROUNDS or MAX_COST_PER_TURN
+    runs out first.
     """
-    total_cost = 0.0
+    for round_num in range(1, MAX_ROUNDS + 1):
+        resp = client.messages.create(model=MODEL, max_tokens=4000, system=system,
+                                      tools=TOOLS, messages=messages)
+        cost = cost_of(resp.usage)
+        run["steps"] = round_num
+        run["cost"] += cost
+        print(f"round {round_num}: {resp.stop_reason}, {resp.usage.input_tokens} in / "
+              f"{resp.usage.output_tokens} out, ${cost:.6f}")
+        trace("model_response", turn=turn, round=round_num, stop_reason=resp.stop_reason,
+              input_tokens=resp.usage.input_tokens, output_tokens=resp.usage.output_tokens,
+              cost=cost, content=[b.model_dump() for b in resp.content])
+        # Keep the whole reply, tool_use blocks included; the results below refer to their ids.
+        messages.append({"role": "assistant", "content": resp.content})
 
+        if resp.stop_reason != "tool_use":
+            print(f"total: {round_num} round(s), ${run['cost']:.6f}")
+            answer = "".join(b.text for b in resp.content if b.type == "text")
+            if resp.stop_reason == "max_tokens":
+                answer += "\n[cut off: hit max_tokens]"
+            return answer or f"[no answer; stop_reason: {resp.stop_reason}]"
+
+        # Checked after each call, so a turn can overshoot by up to one round.
+        # A final answer is kept even if it went over, since it's already paid for.
+        if run["cost"] > MAX_COST_PER_TURN:
+            print(f"total: {round_num} round(s), ${run['cost']:.6f}")
+            raise TurnStopped(f"stopped at ${run['cost']:.4f}, over the "
+                              f"${MAX_COST_PER_TURN:.2f} limit per question")
+
+        # One result per tool call, all in a single user message.
+        results = [run_tool(b, turn, approve, run["tool_calls"])
+                   for b in resp.content if b.type == "tool_use"]
+        messages.append({"role": "user", "content": results})
+
+    print(f"total: {MAX_ROUNDS} rounds, ${run['cost']:.6f}")
+    raise TurnStopped(f"stopped after {MAX_ROUNDS} rounds without a final answer")
+
+
+def run_agent(question: str, messages: list = None, system: str = BASE_SYSTEM,
+              approve=deny_all, turn: int = 1) -> dict:
+    """Answer one question and return what happened:
+
+        {"answer": str or None, "outcome": "answer" | "stopped" | "api_error" | "cancelled",
+         "error": str or None, "tool_calls": [{name, input, result, is_error, confirmed}],
+         "steps": model calls, "cost": dollars, "seconds": wall time}
+
+    The defaults are for evals: a fresh history, no memories in the system
+    prompt, and every write denied. The chat passes its own history, its
+    system prompt with memories, and confirm() to ask y/n.
+
+    On success the question and everything after it stay in messages. On
+    failure they're removed, so the history never ends with a dangling
+    question or a tool_use that has no tool_result.
+    """
+    if messages is None:
+        messages = []
+    n = len(messages)
+    messages.append({"role": "user", "content": question})
+    trace("user_message", turn=turn, text=question)
+
+    run = {"answer": None, "outcome": "answer", "error": None,
+           "tool_calls": [], "steps": 0, "cost": 0.0, "seconds": 0.0}
+    start = time.perf_counter()
     try:
-        for round_num in range(1, MAX_ROUNDS + 1):
-            resp = client.messages.create(model=MODEL, max_tokens=4000, system=system,
-                                          tools=TOOLS, messages=messages)
-            cost = cost_of(resp.usage)
-            total_cost += cost
-            print(f"round {round_num}: {resp.stop_reason}, {resp.usage.input_tokens} in / "
-                  f"{resp.usage.output_tokens} out, ${cost:.6f}")
-            trace("model_response", turn=turn, round=round_num, stop_reason=resp.stop_reason,
-                  input_tokens=resp.usage.input_tokens, output_tokens=resp.usage.output_tokens,
-                  cost=cost, content=[b.model_dump() for b in resp.content])
-            # Keep the whole reply, tool_use blocks included; the results below refer to their ids.
-            messages.append({"role": "assistant", "content": resp.content})
+        run["answer"] = ask(messages, system, turn, approve, run)
+    except TurnStopped as e:
+        run["outcome"], run["error"] = "stopped", str(e)
+    except APIError as e:
+        # Includes APITimeoutError. The SDK has already retried rate limits,
+        # server errors, timeouts, and dropped connections.
+        run["outcome"], run["error"] = "api_error", f"API error: {type(e).__name__}: {e}"
+    except KeyboardInterrupt:
+        run["outcome"], run["error"] = "cancelled", "cancelled"
+    run["seconds"] = round(time.perf_counter() - start, 2)
 
-            if resp.stop_reason != "tool_use":
-                print(f"total: {round_num} round(s), ${total_cost:.6f}")
-                answer = "".join(b.text for b in resp.content if b.type == "text")
-                if resp.stop_reason == "max_tokens":
-                    answer += "\n[cut off: hit max_tokens]"
-                return answer or f"[no answer; stop_reason: {resp.stop_reason}]", total_cost
-
-            # Checked after each call, so a turn can overshoot by up to one round.
-            # A final answer is kept even if it went over, since it's already paid for.
-            if total_cost > MAX_COST_PER_TURN:
-                print(f"total: {round_num} round(s), ${total_cost:.6f}")
-                raise TurnStopped(f"stopped at ${total_cost:.4f}, over the "
-                                  f"${MAX_COST_PER_TURN:.2f} limit per question", total_cost)
-
-            # One result per tool call, all in a single user message.
-            results = [run_tool(b, turn) for b in resp.content if b.type == "tool_use"]
-            messages.append({"role": "user", "content": results})
-    except (APIError, KeyboardInterrupt) as e:
-        # Rounds that finished before the interruption were still paid for.
-        e.turn_cost = total_cost
-        raise
-
-    print(f"total: {MAX_ROUNDS} rounds, ${total_cost:.6f}")
-    raise TurnStopped(f"stopped after {MAX_ROUNDS} rounds without a final answer", total_cost)
+    # Rolled-back turns are still traced: the trace shows what happened,
+    # messages only what the model remembers.
+    if run["outcome"] != "answer":
+        del messages[n:]
+    trace("turn_end", turn=turn, outcome=run["outcome"], answer=run["answer"],
+          reason=run["error"], cost=run["cost"], steps=run["steps"], seconds=run["seconds"])
+    return run
 
 
 def summarize(messages: list, system: str) -> tuple[str, float]:
@@ -247,45 +299,14 @@ def main():
         if not question:
             continue  # ignore empty lines
 
-        # On failure, drop the whole turn so the history never ends with a
-        # dangling question or a tool_use that has no tool_result.
-        n = len(messages)
-        messages.append({"role": "user", "content": question})
         turn += 1
-        trace("user_message", turn=turn, text=question)
-
-        # Rolled-back turns are still traced: the trace shows what happened,
-        # messages only what the model remembers.
-        try:
-            answer, cost = ask(messages, system, turn)
-        except TurnStopped as e:
-            session_cost += e.cost
-            trace("turn_end", turn=turn, outcome="stopped", reason=str(e), cost=e.cost)
-            print(f"\n[{e}]")
-            print(f"[session total: ${session_cost:.6f}]")
-            del messages[n:]
-            continue
-        except APIError as e:
-            # Includes APITimeoutError. The SDK has already retried rate limits,
-            # server errors, timeouts, and dropped connections.
-            session_cost += e.turn_cost
-            trace("turn_end", turn=turn, outcome="api_error",
-                  reason=f"{type(e).__name__}: {e}", cost=e.turn_cost)
-            print(f"\n[API error: {type(e).__name__}: {e}]")
-            print(f"[session total: ${session_cost:.6f}]")
-            del messages[n:]
-            continue
-        except KeyboardInterrupt as e:
-            session_cost += e.turn_cost
-            trace("turn_end", turn=turn, outcome="cancelled", cost=e.turn_cost)
-            print("\n[cancelled]")
-            print(f"[session total: ${session_cost:.6f}]")
-            del messages[n:]
-            continue
-
-        session_cost += cost
-        trace("turn_end", turn=turn, outcome="answer", answer=answer, cost=cost)
-        print(f"\nClaude: {answer}")
+        result = run_agent(question, messages, system, approve=confirm, turn=turn)
+        # Failed turns were still paid for.
+        session_cost += result["cost"]
+        if result["outcome"] == "answer":
+            print(f"\nClaude: {result['answer']}")
+        else:
+            print(f"\n[{result['error']}]")
         print(f"[session total: ${session_cost:.6f}]")
 
     # Every way out of the loop (quit, Ctrl-D, Ctrl-C) ends up here.

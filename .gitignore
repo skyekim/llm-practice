@@ -19,6 +19,9 @@ node_modules/
 .vscode/
 .idea/
 
+# Agent traces: full chats, posting text, and application notes
+trace.jsonl
+
 # Large model / data files
 *.safetensors
 *.bin

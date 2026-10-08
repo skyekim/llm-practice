@@ -12,6 +12,7 @@ Each practice task lives in its own folder with its own README describing the go
 | 02 | [Extraction](02-extraction/) | Structured extraction: Pydantic validation, JSON in the prompt vs. forced tool call, data quality | Done |
 | 03 | [Tools](03-tools/) | Tool use: Postgres database, narrow query tools, tool loop agent, parameterized queries | Done |
 | 04 | [RAG](04-rag/) | Retrieval-augmented generation: chunking, embeddings with pgvector, cited answers, semantic vs. keyword search | Done |
+| 05 | [Agent](05-agent/) | Agent: chat loop around a tool loop, structured and text search, safety rails, confirmation for writes, memory across sessions, tracing | Done |
 
 ## Structure
 

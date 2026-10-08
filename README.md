@@ -13,7 +13,7 @@ Each practice task lives in its own folder with its own README describing the go
 | 03 | [Tools](03-tools/) | Tool use: Postgres database, narrow query tools, tool loop agent, parameterized queries | Done |
 | 04 | [RAG](04-rag/) | Retrieval-augmented generation: chunking, embeddings with pgvector, cited answers, semantic vs. keyword search | Done |
 | 05 | [Agent](05-agent/) | Agent: chat loop around a tool loop, structured and text search, safety rails, confirmation for writes, memory across sessions, tracing | Done |
-| 06 | [Evals](06-evals/) | Evals: agent callable from code, test cases from the data, code-based checks, flaky vs. stable failures | In progress |
+| 06 | [Evals](06-evals/) | Evals: agent callable from code, test cases from the data, code-based checks, LLM judge, versions compared one change at a time, flaky vs. stable failures | Done |
 
 ## Structure
 

@@ -1,0 +1,55 @@
+{
+  "label": "min-years-edra-3",
+  "run_at": "2026-10-08T14:39:44",
+  "passed": 1,
+  "total": 1,
+  "pass_rate": 1.0,
+  "by_category": {
+    "unanswerable": {
+      "passed": 1,
+      "total": 1
+    }
+  },
+  "cost": 0.009398,
+  "judge_cost": 0,
+  "seconds": 10.38,
+  "avg_steps": 3.0,
+  "avg_seconds": 10.38,
+  "cases": [
+    {
+      "id": "edra-interviews",
+      "category": "unanswerable",
+      "question": "What does Edra's interview process look like?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "Unfortunately, the posting doesn't contain specific information about Edra's interview process. The search results don't include details about their interview stages, format, or what to expect. You may want to reach out to Edra directly or check if they have information about their hiring process on their website or other resources.\n\nIs there anything else about the Edra Software Engineer - Back End position I can help you with?",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "edra"
+          },
+          "result": "[{\"id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"salary_min\": 200000, \"salary_max\": 300000, \"min_years\": 3}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "search_posting_text",
+          "input": {
+            "posting_id": 3,
+            "query": "interview process"
+          },
+          "result": "[{\"chunk_id\": 24, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.359, \"text\": \"Software Engineer - Back End (New York)\\n\\nNew York, NY\\nAbout the job\\nAbout Edra\"}, {\"chunk_id\": 32, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.32, \"text\": \"Participate in weekly product meetings, understand how customers and forward deployed engineers use what you build, and shape what gets built next\\nCollaborate daily with a small, high-caliber team of engineers and AI specialists\"}, {\"chunk_id\": 33, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.253, \"text\": \"Have direct influence on technical direction: choose tools, set patterns, and establish conventions the team will build on for years\"}, {\"chunk_id\": 36, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.239, \"text\": \"You're at your best when you own a problem end to end \\u2014 comfortable with ambiguity and energized by turning a vague problem into a well-scoped solution\\nYou're drawn to building foundational systems from scratch \\u2014 greenfield work where your decisions compound over time excites you\"}, {\"chunk_id\": 41, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.223, \"text\": \"We work together in person five days a week from our offices in the West Village (New York) and Holborn (London).\"}, {\"chunk_id\": 37, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.216, \"text\": \"Don't meet all of the above? We'd still love to hear from you. We're looking for exceptional people with unique skills and interests, and we know that great people have different backgrounds and skillsets. If your primary interest is building agentic systems, working with LLMs, or doing applied ML, check out our AI Engineering role\\u2013it might be a better fit.\"}, {\"chunk_id\": 27, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.2, \"text\": \"The Role\\nWe're looking for Backend Engineers who care deeply about the craft of building software: strong typing, thoughtful API design, robust data modeling, and systems that are a pleasure for other engineers to work with. You won't be building AI models, you'll be building everything around them: the platform, workflows, interfaces, integrations, and observability that make our AI useful in the real world. As an early engineer at Edra, you'll shape not just the product but the engineering culture, tooling choices, and technical foundations the company is built on.\"}, {\"chunk_id\": 25, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.196, \"text\": \"Edra is solving one of the hardest problems in enterprise AI: AI models are generic but company processes are specific. We build AI agents that learn how processes actually run, and then run their operations.\"}, {\"chunk_id\": 30, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.191, \"text\": \"Build internal libraries, tooling, and interfaces that make the rest of the engineering team more productive\\nOwn your work fully: gather context, manage dependencies, and drive tasks to completion without a product manager handing you tickets\"}, {\"chunk_id\": 28, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.181, \"text\": \"We work deliberately and deeply. There's no separation between \\\"building it\\\" and \\\"shipping it\\\"--you'll go from whiteboard to production and own the outcome. We'd rather build something thoughtfully than ship something fragile, and we treat velocity and quality as complementary, not competing.\"}, {\"chunk_id\": 26, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.175, \"text\": \"We're a Series A startup, backed by Sequoia and other leading VC firms, led by Co-Founders who created and led Forward Deployed AI Engineering at Palantir, and we're growing our team in New York and London. We're a deeply technical team of engineers, AI researchers, and strategists with a high bar for talent and a shared belief that exceptional people are the foundation of everything great we'll build.\"}, {\"chunk_id\": 31, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.158, \"text\": \"Wear multiple hats across the stack\\u2013you might design a schema in the morning, build the API layer in the afternoon, and debug a deployment issue before end of day\"}, {\"chunk_id\": 29, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.137, \"text\": \"What You'll Do\\nDesign and build platform systems in Python (Fast API), from API contracts to database schema and infrastructure\\nBuild and maintain connectors, integrations, and data pipelines that connect our platform to external systems\"}, {\"chunk_id\": 38, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.135, \"text\": \"Learn More About Edra\\n\\nWatch our Series A announcement video\\nRead our blog post from our launch\\nLearn more about what we're building\\nOur founders point of view on the market\"}, {\"chunk_id\": 40, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.128, \"text\": \"Competitive base salary & meaningful equity \\nTop tier health, dental, & vision plans:\\nTop plans with 100% premium coverage in the US (and a One Medical membership)\\nPrivate medical & dental coverage in the UK \\nFlexible paid time off \\nLunch provided in office most days, snacks & drinks too\\nA stipend to set up your workspace\\nA Few Details\"}, {\"chunk_id\": 42, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.118, \"text\": \"Edra is an equal opportunity employer and we encourage applications from individuals of all backgrounds. Edra does not discriminate on the basis of race, color, religion, sex, national origin, age, disability, genetic information, marital status, sexual orientation, gender identity, veteran status, or any other legally protected characteristic.\\nCompensation Range: $200K - $300K\"}, {\"chunk_id\": 35, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.101, \"text\": \"Experience building libraries, SDKs, or internal tooling that made other developers' lives easier (and you\\u2019ve enjoyed it)\\nYou light up when designing a clean database schema and take real pride in getting data models right\"}, {\"chunk_id\": 34, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.096, \"text\": \"What We\\u2019re Looking For\\n3+ years of experience in software engineering (but a computer science degree is not necessarily required)\\nA love of writing Python and/or TypeScript to a genuinely high standard\\u2013well-modeled, well-typed, and well-documented. Strong typing feels like a superpower, not a chore\"}, {\"chunk_id\": 39, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.061, \"text\": \"Compensation & Benefits\\n\\nEdra offers generous compensation and benefits in both New York & London:\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 3,
+      "cost": 0.009398,
+      "seconds": 10.38
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "label": "rag-k-20-pto-3",
+  "run_at": "2026-10-08T14:31:36",
+  "passed": 1,
+  "total": 1,
+  "pass_rate": 1.0,
+  "by_category": {
+    "text": {
+      "passed": 1,
+      "total": 1
+    }
+  },
+  "cost": 0.008161999999999999,
+  "judge_cost": 0.001531,
+  "seconds": 8.89,
+  "avg_steps": 2.0,
+  "avg_seconds": 8.89,
+  "cases": [
+    {
+      "id": "unlimited-pto",
+      "category": "text",
+      "question": "Which postings offer unlimited PTO or vacation?",
+      "passed": true,
+      "failures": [],
+      "judge": {
+        "pass": true,
+        "reason": "The answer correctly identifies the three postings that offer unlimited PTO or vacation: Bevel, Guac, and Oso. No other postings are claimed to offer unlimited time off, so this perfectly aligns with the rubric requirements.",
+        "cost": 0.001531
+      },
+      "answer": "Based on the search results, here are the postings that offer unlimited PTO or vacation:\n\n1. **Oso - Software Engineer** [chunk 163]: Offers \"Unlimited paid time off (PTO)\"\n\n2. **Bevel - Backend Engineer** [chunk 9]: Offers \"Unlimited PTO\"\n\n3. **Guac - Backend Engineer** [chunk 70]: Offers \"Unlimited vacation days\"\n\nThese are the three postings in your saved job list that explicitly mention unlimited time off.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "unlimited PTO vacation"
+          },
+          "result": "[{\"chunk_id\": 163, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.511, \"text\": \"Competitive health, dental, and vision coverage\\nMental healthcare to all employees and anyone in their family through Spring Health\\nUnlimited access to financial advisors through Northstar\\nEquity Package\\nUnlimited paid time off (PTO)\\nPaid parental leave\\nFlexible work options\\nOne Medical Membership\"}, {\"chunk_id\": 104, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.442, \"text\": \"Benefits\\nOpportunity to travel (if applicable)\\nFlexible vacation policy\\nPrivate Healthcare\\nEmployee stock ownership (ESOP)\\nFlexible working and autonomy\\nPay it forward days - we offer 2 annual pay it forward days where you can take time to volunteer for a charitable cause that is important to you.\"}, {\"chunk_id\": 9, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.401, \"text\": \"Benefits\\n\\nExciting work environment\\nCompetitive salary & equity\\nHealth, dental, and vision insurance\\nCommuter benefits\\nPaid lunch and dinner when in the office\\nWork-life balance\\nPet-friendly office in Chelsea\\nUnlimited PTO\\n401k plan\\nVisa sponsorship if applicable\"}, {\"chunk_id\": 185, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.395, \"text\": \"We offer comprehensive medical, dental, and vision benefits, 401(k) matching, daily meals together in the office, flexible PTO (4 weeks per year), and relocation support for candidates not already based in NYC.\\n\\nCompensation Range: $150K - $300K\"}, {\"chunk_id\": 72, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.335, \"text\": \"Note: this is an in-person 5 days a week, full time job in NYC.\"}, {\"chunk_id\": 57, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.303, \"text\": \"Perks & Benefits\\n\\nCompetitive base + bonus + equity\\nCatered lunch daily\\nDinner stipend\\n$500/month wellness & commuter benefit (gym, fitness classes, mental health)\\n401(k) plan\\nMedical, dental, and vision coverage\"}, {\"chunk_id\": 164, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.296, \"text\": \"Quarterly hackathons... and prizes!\\nFree team lunches every month\"}, {\"chunk_id\": 83, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.276, \"text\": \"Comp & Benefits\\n\\n$150\\u2013250K base\\n0.15\\u20130.5% equity\\nTop-tier health, dental, vision\\nHybrid in NYC (ask about our pool table)\"}, {\"chunk_id\": 145, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.276, \"text\": \"We see a world where developers never roll their own authorization again, and instead say, \\\"Just use Oso\\\" \\u2013 the same way you might say, \\\"Oh, you should just use Postgres for that.\\\" In doing so, we're creating the $25B+ authorization market.\"}, {\"chunk_id\": 22, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.272, \"text\": \"Generous parental leave policy\\nCommuter benefits\\nFitness benefits\\nHealthcare and Dependent care FSA benefit\\nEmployee Assistance Programs focused on mental health\\nHealthcare advocacy program for all employees\\nAccess to mental health apps\\nTeam building activities\"}, {\"chunk_id\": 162, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.27, \"text\": \"Benefits\\n\\nIn addition to cash compensation, Oso offers a Total Rewards package that includes equity grants, health benefits, and more:\"}, {\"chunk_id\": 124, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.259, \"text\": \"What we offer\\nWe offer a comprehensive benefits package designed to support your well-being, growth, and work-life balance. Benefits vary by country and may include healthcare coverage, parental leave, retirement plans, relocation support, wellness programs, meal and transportation allowances, and other location-specific perks.\"}, {\"chunk_id\": 70, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.258, \"text\": \"What We Offer\\nFirst-hand experience building an early-stage startup\\nCompensation: $150k\\u2013$250k base + competitive equity\\nFully employer-paid healthcare (medical, dental, and vision)\\nUnlimited vacation days\\nFully covered food expenses in the office (lunch/dinner)\\nFree Equinox membership\"}, {\"chunk_id\": 23, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.252, \"text\": \"Our modern NYC based office with open floor plan, stocked kitchen, and catered lunches\"}, {\"chunk_id\": 105, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.232, \"text\": \"Wellness days - we believe you can only work your best when you feel your best, and we know working at Lorum is intense, so we offer 3 wellness days every quarter where you can take time to re-energise.\"}, {\"chunk_id\": 175, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.222, \"text\": \"What You'll Do\\nOwn systems that automate repetitive work across browser and desktop, handling concurrency, reliability, and observability at scale (millions of executions per month)\\nCollaborate with our CTO and ML research partners to bring state-of-the-art agentic workflows into production\"}, {\"chunk_id\": 142, \"posting_id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"similarity\": 0.216, \"text\": \"OpenAI Global Applicant Privacy Policy\\n\\nAt OpenAI, we believe artificial intelligence has the potential to help people solve immense global challenges, and we want the upside of AI to be widely shared. Join us in shaping the future of technology.\\n\\nCompensation Range: $266K - $445K\"}, {\"chunk_id\": 125, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.215, \"text\": \"For the most up-to-date details on benefits available in your location, please refer to our Benefits page.\"}, {\"chunk_id\": 21, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.21, \"text\": \"Benefits\\nCompetitive salary\\nMeaningful equity in the form of stock options\\n401(k) plan\\nDiscretionary performance bonus program\\nBiannual performance reviews\\nMedical, Dental and Vision premiums covered at 100% for you and your dependents\\nFlexible time off and paid holidays\"}, {\"chunk_id\": 41, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.179, \"text\": \"We work together in person five days a week from our offices in the West Village (New York) and Holborn (London).\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.006631,
+      "seconds": 8.89
+    }
+  ]
+}

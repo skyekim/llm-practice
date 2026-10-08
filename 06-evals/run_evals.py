@@ -6,14 +6,18 @@ Each case passes only if every check passes:
 - must_not_include: no item appears in the answer
 - unanswerable:     the answer says the data doesn't have it
 - expected_tools:   each listed tool was called at least once
+- rubric:           an LLM judge (judge.py) says the answer meets it
 
 The agent runs without memory and with every write denied (run_agent's
 defaults), so the evals can't change the applications table.
 
 Usage, from the repo root:
-    python 06-evals/run_evals.py                  # every case
-    python 06-evals/run_evals.py visa remote      # only these ids
-    python 06-evals/run_evals.py --verbose        # show the agent's rounds and tool calls
+    python 06-evals/run_evals.py --label baseline          # every case, saved to results/baseline.json
+    python 06-evals/run_evals.py --case visa --case remote # only these ids
+    python 06-evals/run_evals.py --verbose                 # show the agent's rounds and tool calls
+
+Without --label, results are saved under a timestamp, so debugging runs don't
+overwrite a labeled one.
 """
 import argparse
 import contextlib
@@ -30,7 +34,8 @@ EVALS_DIR = Path(__file__).parent
 # with a digit), so put that folder on the path. Its own imports, like tools
 # and db, then resolve too.
 sys.path.insert(0, str(EVALS_DIR.parent / "05-agent"))
-from agent import run_agent  # noqa: E402
+from agent import MODEL, run_agent  # noqa: E402
+from judge import judge  # noqa: E402
 
 CASES_PATH = EVALS_DIR / "cases.json"
 RESULTS_DIR = EVALS_DIR / "results"
@@ -100,17 +105,20 @@ def check(case: dict, result: dict) -> list[str]:
 
 def main():
     parser = argparse.ArgumentParser(description="Run the agent evals.")
-    parser.add_argument("ids", nargs="*", help="only run these case ids")
+    parser.add_argument("--case", action="append", default=[], metavar="ID",
+                        help="only run this case id; repeat to run several")
+    parser.add_argument("--label",
+                        help="name for this version, e.g. baseline; saves to results/<label>.json")
     parser.add_argument("--verbose", action="store_true",
                         help="show the agent's own output (rounds and tool calls)")
     args = parser.parse_args()
 
     cases = json.loads(CASES_PATH.read_text())
-    if args.ids:
-        unknown = set(args.ids) - {c["id"] for c in cases}
+    if args.case:
+        unknown = set(args.case) - {c["id"] for c in cases}
         if unknown:
             sys.exit(f"Unknown case ids: {', '.join(sorted(unknown))}")
-        cases = [c for c in cases if c["id"] in args.ids]
+        cases = [c for c in cases if c["id"] in args.case]
 
     records = []
     for i, case in enumerate(cases, 1):
@@ -123,36 +131,72 @@ def main():
             break
 
         failures = check(case, result)
+        # The judge only grades real answers; check() already failed the rest.
+        verdict = None
+        if case.get("rubric") and result["outcome"] == "answer":
+            verdict = judge(case["question"], result["answer"], case["rubric"])
+            if not verdict["pass"]:
+                failures.append(f"judge: {verdict['reason']}")
         passed = not failures
         tools = ", ".join(c["name"] for c in result["tool_calls"]) or "none"
         print(f"  {'PASS' if passed else 'FAIL'}  {result['steps']} steps, "
               f"${result['cost']:.4f}, {result['seconds']}s  tools: {tools}")
         for failure in failures:
             print(f"        {failure}")
+        # Print passing verdicts too, so they can be checked by hand.
+        if verdict and verdict["pass"]:
+            print(f"        judge: {verdict['reason']}")
         records.append({"id": case["id"], "category": case["category"],
                         "question": case["question"], "passed": passed,
-                        "failures": failures, **result})
+                        "failures": failures, "judge": verdict, **result})
 
     if not records:
         return
 
-    # Summary by category, in the order categories first appear in cases.json.
+    # One row per case.
+    id_width = max(len(r["id"]) for r in records)
+    cat_width = max(len(r["category"]) for r in records)
+    print()
+    print(f"{'case':<{id_width}}  {'category':<{cat_width}}  result  {'cost':>7}  steps  {'time':>5}")
+    for r in records:
+        print(f"{r['id']:<{id_width}}  {r['category']:<{cat_width}}  "
+              f"{'PASS' if r['passed'] else 'FAIL':<6}  ${r['cost']:.4f}  "
+              f"{r['steps']:>5}  {r['seconds']:>4.0f}s")
+
+    # Pass rate by category, in the order categories first appear in cases.json.
     by_category = defaultdict(list)
     for r in records:
         by_category[r["category"]].append(r["passed"])
     print()
     for category, results in by_category.items():
-        print(f"{category:<14} {sum(results)}/{len(results)}")
+        print(f"{category:<14} {sum(results)}/{len(results)}  "
+              f"{sum(results) / len(results):.0%}")
     passed = sum(r["passed"] for r in records)
-    cost = sum(r["cost"] for r in records)
+    # Per-case cost is the agent's; the judge's calls are counted separately.
+    judge_cost = sum(r["judge"]["cost"] for r in records if r["judge"])
+    cost = sum(r["cost"] for r in records) + judge_cost
     seconds = sum(r["seconds"] for r in records)
-    print(f"{'total':<14} {passed}/{len(records)} passed, ${cost:.4f}, {seconds:.0f}s")
+    avg_steps = sum(r["steps"] for r in records) / len(records)
+    avg_seconds = seconds / len(records)
+    print(f"{'total':<14} {passed}/{len(records)}  {passed / len(records):.0%}")
+    print(f"\nTotal cost ${cost:.4f} (judge ${judge_cost:.4f}), average "
+          f"{avg_steps:.1f} steps and {avg_seconds:.1f}s per case")
 
     # Every answer and tool call, so runs can be compared after a change.
+    label = args.label or f"{datetime.now():%Y%m%d-%H%M%S}"
     RESULTS_DIR.mkdir(exist_ok=True)
-    path = RESULTS_DIR / f"{datetime.now():%Y%m%d-%H%M%S}.json"
-    path.write_text(json.dumps({"passed": passed, "total": len(records), "cost": cost,
-                                "seconds": seconds, "cases": records}, indent=2))
+    path = RESULTS_DIR / f"{label}.json"
+    path.write_text(json.dumps({
+        "label": label,
+        "model": MODEL,
+        "run_at": datetime.now().isoformat(timespec="seconds"),
+        "passed": passed, "total": len(records), "pass_rate": passed / len(records),
+        "by_category": {c: {"passed": sum(rs), "total": len(rs)}
+                        for c, rs in by_category.items()},
+        "cost": cost, "judge_cost": judge_cost, "seconds": seconds,
+        "avg_steps": avg_steps, "avg_seconds": avg_seconds,
+        "cases": records,
+    }, indent=2))
     print(f"Saved to {path}")
 
 

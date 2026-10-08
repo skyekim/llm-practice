@@ -1,0 +1,176 @@
+{
+  "label": "judge-check-1",
+  "run_at": "2026-10-08T14:01:10",
+  "passed": 2,
+  "total": 3,
+  "pass_rate": 0.6666666666666666,
+  "by_category": {
+    "tricky": {
+      "passed": 0,
+      "total": 1
+    },
+    "open-ended": {
+      "passed": 2,
+      "total": 2
+    }
+  },
+  "cost": 0.033173999999999995,
+  "judge_cost": 0.005154,
+  "seconds": 24.330000000000002,
+  "avg_steps": 3.0,
+  "avg_seconds": 8.110000000000001,
+  "cases": [
+    {
+      "id": "remote",
+      "category": "tricky",
+      "question": "Which postings are remote?",
+      "passed": false,
+      "failures": [
+        "judge: The answer fails to explicitly state that none of the postings are fully remote, which the rubric requires. While it lists several postings as \"Not Fully Remote,\" it doesn't clearly answer the question \"Which postings are remote?\" by stating \"none\" or directly confirming no postings are fully remote. Additionally, the answer omits information about Hazel (hybrid) and Oso (flexible work options) from the final summary."
+      ],
+      "judge": {
+        "pass": false,
+        "reason": "The answer fails to explicitly state that none of the postings are fully remote, which the rubric requires. While it lists several postings as \"Not Fully Remote,\" it doesn't clearly answer the question \"Which postings are remote?\" by stating \"none\" or directly confirming no postings are fully remote. Additionally, the answer omits information about Hazel (hybrid) and Oso (flexible work options) from the final summary.",
+        "cost": 0.001846
+      },
+      "answer": "Based on the search results, here's what I found about remote work policies:\n\n**Not Fully Remote:**\n- **Lorum** (Software Engineer Backend, posting 7): In-office 3 days a week in New York [chunk 85]\n- **Edra** (Software Engineer - Back End, posting 3): In-person 5 days a week from West Village (New York) or Holborn (London) [chunk 41]\n- **Guac** (Backend Engineer, posting 5): In-person 5 days a week, full-time in NYC [chunk 72]\n- **Sola** (Software Engineer, Backend, posting 11): Requires working 5 days a week out of their NYC office [chunk 178]\n\nFor the remaining postings in your saved jobs, the search results don't show explicit remote work information. Would you like me to get the full details for any specific postings to check their location requirements?",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "remote work fully remote"
+          },
+          "result": "[{\"chunk_id\": 180, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.269, \"text\": \"You\\u2019ve worked directly on AI systems or in ML ops at scale\\nYou\\u2019re ambitious, creative, and a great communicator\"}, {\"chunk_id\": 41, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.263, \"text\": \"We work together in person five days a week from our offices in the West Village (New York) and Holborn (London).\"}, {\"chunk_id\": 171, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.257, \"text\": \"If you\\u2019re interested in being on the forefront of agentic automation, we\\u2019d love to hear from you!\"}, {\"chunk_id\": 72, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.243, \"text\": \"Note: this is an in-person 5 days a week, full time job in NYC.\"}, {\"chunk_id\": 89, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.232, \"text\": \"This role is ideal for someone who enjoys working in fast-moving environments, thrives in ambiguity, and cares deeply about building high-quality backend systems that solve real-world problems. We\\u2019re particularly looking for engineers with strong experience in distributed systems and an interest in working with Rust.\"}, {\"chunk_id\": 177, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.227, \"text\": \"What we're looking for\\nYou thrive in a fast-paced environment where you can ship fast and solve problems end-to-end\\nYou\\u2019ve built and operated distributed systems at scale, with a high standard for reliability, observability, and performance\"}, {\"chunk_id\": 115, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.227, \"text\": \" Partner with teams across AI Studio, Le Chat & Mistral Code to ensure consistent platform-wide experience.\"}, {\"chunk_id\": 69, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.222, \"text\": \"(Bonus) Experience in customer-facing technical roles (e.g. forward deployed engineer)\\n(Bonus) Experience deploying LLM-powered features to production at scale\"}, {\"chunk_id\": 175, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.222, \"text\": \"What You'll Do\\nOwn systems that automate repetitive work across browser and desktop, handling concurrency, reliability, and observability at scale (millions of executions per month)\\nCollaborate with our CTO and ML research partners to bring state-of-the-art agentic workflows into production\"}, {\"chunk_id\": 79, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.22, \"text\": \"You'll work directly with the founders and customers. Code you ship today is in front of operators tomorrow.\"}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "remote distributed work location flexibility"
+          },
+          "result": "[{\"chunk_id\": 85, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.459, \"text\": \"Software Engineer (Backend)\\n\\nNew York, NY About the job\\nLocation: New York - in office 3 days a week\"}, {\"chunk_id\": 41, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.417, \"text\": \"We work together in person five days a week from our offices in the West Village (New York) and Holborn (London).\"}, {\"chunk_id\": 177, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.405, \"text\": \"What we're looking for\\nYou thrive in a fast-paced environment where you can ship fast and solve problems end-to-end\\nYou\\u2019ve built and operated distributed systems at scale, with a high standard for reliability, observability, and performance\"}, {\"chunk_id\": 133, \"posting_id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"similarity\": 0.398, \"text\": \"You Might Be a Fit If You\\nHave operated large-scale distributed systems in production. ( especially logging systems or some other time series databases)\\nThrive in ambiguous environments and roll up your sleeves to solve unscoped problems.\"}, {\"chunk_id\": 89, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.371, \"text\": \"This role is ideal for someone who enjoys working in fast-moving environments, thrives in ambiguity, and cares deeply about building high-quality backend systems that solve real-world problems. We\\u2019re particularly looking for engineers with strong experience in distributed systems and an interest in working with Rust.\"}, {\"chunk_id\": 24, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.356, \"text\": \"Software Engineer - Back End (New York)\\n\\nNew York, NY\\nAbout the job\\nAbout Edra\"}, {\"chunk_id\": 168, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.355, \"text\": \"Software Engineer, Backend\\n\\nNew York, NY\\nAbout the job\\nJoin Us in Building the Future of Digital Work\"}, {\"chunk_id\": 153, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.35, \"text\": \"Build and operate infrastructure for our highly available and low latency cloud service\"}, {\"chunk_id\": 178, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.343, \"text\": \"You\\u2019re proficient across all layers on the backend, from infra to CI/CD to DB to backend service architecture\\nYou\\u2019re fluent with the latest AI coding tools and are always looking for ways to move faster\\nYou\\u2019re open to working 5 days a week out of our office in NYC (we\\u2019ll cover relocation!)\"}, {\"chunk_id\": 72, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.341, \"text\": \"Note: this is an in-person 5 days a week, full time job in NYC.\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 3,
+      "cost": 0.010832,
+      "seconds": 13.59
+    },
+    {
+      "id": "compare-giga-sola",
+      "category": "open-ended",
+      "question": "Compare the Giga and Sola postings.",
+      "passed": true,
+      "failures": [],
+      "judge": {
+        "pass": true,
+        "reason": "The answer correctly states both salary ranges ($160k\u2013$250k for Giga and $150k\u2013$300k for Sola), correctly identifies Giga's 1+ years experience requirement, and correctly notes that Sola has no stated experience requirement. All rubric facts are accurate.",
+        "cost": 0.001823
+      },
+      "answer": "Here's a comparison of the Giga and Sola postings:\n\n| Aspect | Giga | Sola |\n|--------|------|------|\n| **Title** | Software Engineer I / II | Software Engineer, Backend |\n| **Location** | New York, NY | New York, NY |\n| **Company Type** | AI-focused | AI-focused |\n| **Experience Required** | 1+ years | Not specified |\n| **Salary Range** | $160k\u2013$250k | $150k\u2013$300k |\n| **Skills** | agent infrastructure, api integrations, backend engineering, database design, data pipelines, full-stack development, natural language processing, slack integration | ai systems, distributed systems, dynamodb, kubernetes, mlops, postgresql, python, temporal, typescript |\n| **Application Status** | Applied (Oct 1) | Applied (Oct 8) |\n\n**Key Differences:**\n- **Salary ceiling**: Sola goes higher ($300k vs $250k)\n- **Experience**: Giga explicitly requires 1+ years; Sola has no stated requirement\n- **Focus**: Giga emphasizes full-stack and NLP work; Sola focuses on distributed systems and ML operations\n- **Tech stack**: Giga lists more infrastructure/integration skills, while Sola specifies particular technologies (Kubernetes, DynamoDB, PostgreSQL, Python, TypeScript, Temporal)\n\nBoth are AI companies in New York, and you've applied to both recently.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Giga"
+          },
+          "result": "[{\"id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"salary_min\": 160000, \"salary_max\": 250000}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Sola"
+          },
+          "result": "[{\"id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"salary_min\": 150000, \"salary_max\": 300000}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 4
+          },
+          "result": "{\"id\": 4, \"slug\": \"giga\", \"company\": \"Giga\", \"ai_company\": true, \"title\": \"Software Engineer I / II\", \"location\": \"New York, NY\", \"min_years\": 1, \"salary_min\": 160000, \"salary_max\": 250000, \"skills\": [\"agent infrastructure\", \"api integrations\", \"backend engineering\", \"database design\", \"data pipelines\", \"full-stack development\", \"natural language processing\", \"slack integration\"], \"application\": {\"status\": \"applied\", \"applied_date\": \"2026-10-01\", \"notes\": \"Applied through the careers page\"}}",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 11
+          },
+          "result": "{\"id\": 11, \"slug\": \"sola\", \"company\": \"Sola\", \"ai_company\": true, \"title\": \"Software Engineer, Backend\", \"location\": \"New York, NY\", \"min_years\": null, \"salary_min\": 150000, \"salary_max\": 300000, \"skills\": [\"ai systems\", \"distributed systems\", \"dynamodb\", \"kubernetes\", \"mlops\", \"postgresql\", \"python\", \"temporal\", \"typescript\"], \"application\": {\"status\": \"applied\", \"applied_date\": \"2026-10-08\", \"notes\": null}}",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 3,
+      "cost": 0.009243999999999999,
+      "seconds": 6.44
+    },
+    {
+      "id": "compare-edra-guac",
+      "category": "open-ended",
+      "question": "Which pays more, Edra or Guac, and how do their experience requirements compare?",
+      "passed": true,
+      "failures": [],
+      "judge": {
+        "pass": true,
+        "reason": "The answer correctly states that Edra pays more (with higher salary ranges at both ends: $200K-$300K vs $150K-$250K) and accurately notes that both positions require 3+ years of experience.",
+        "cost": 0.001485
+      },
+      "answer": "**Salary comparison:** Edra pays more. Edra's Backend Engineer role offers $200k\u2013$300k, while Guac's Backend Engineer role offers $150k\u2013$250k. At the top end, Edra offers $50k more.\n\n**Experience requirements:** Both require the same minimum experience\u20143 years.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Edra"
+          },
+          "result": "[{\"id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"salary_min\": 200000, \"salary_max\": 300000}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Guac"
+          },
+          "result": "[{\"id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"salary_min\": 150000, \"salary_max\": 250000}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 3
+          },
+          "result": "{\"id\": 3, \"slug\": \"edra\", \"company\": \"Edra\", \"ai_company\": true, \"title\": \"Software Engineer - Back End\", \"location\": \"New York\", \"min_years\": 3, \"salary_min\": 200000, \"salary_max\": 300000, \"skills\": [\"api design\", \"database design\", \"data pipelines\", \"fastapi\", \"infrastructure\", \"python\", \"typescript\"], \"application\": null}",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 5
+          },
+          "result": "{\"id\": 5, \"slug\": \"guac\", \"company\": \"Guac\", \"ai_company\": true, \"title\": \"Backend Engineer\", \"location\": \"New York, NY\", \"min_years\": 3, \"salary_min\": 150000, \"salary_max\": 250000, \"skills\": [\"agents\", \"bigquery\", \"dagster\", \"dask\", \"data pipelines\", \"docker\", \"etl\", \"fastapi\", \"gcp\", \"llms\", \"mcp servers\", \"postgresql\", \"python\", \"rag\", \"terraform\", \"tool use / function calling\"], \"application\": {\"status\": \"saved\", \"applied_date\": null, \"notes\": \"Strong match on Python, FastAPI, and RAG\"}}",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 3,
+      "cost": 0.007944,
+      "seconds": 4.3
+    }
+  ]
+}

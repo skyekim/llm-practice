@@ -1,0 +1,37 @@
+{
+  "label": "min-years-edra-2",
+  "run_at": "2026-10-08T14:39:25",
+  "passed": 0,
+  "total": 1,
+  "pass_rate": 0.0,
+  "by_category": {
+    "unanswerable": {
+      "passed": 0,
+      "total": 1
+    }
+  },
+  "cost": 0.002424,
+  "judge_cost": 0,
+  "seconds": 1.94,
+  "avg_steps": 1.0,
+  "avg_seconds": 1.94,
+  "cases": [
+    {
+      "id": "edra-interviews",
+      "category": "unanswerable",
+      "question": "What does Edra's interview process look like?",
+      "passed": false,
+      "failures": [
+        "didn't call: search_posting_text"
+      ],
+      "judge": null,
+      "answer": "I don't have information about a company called \"Edra\" in your saved job postings. Could you help me find it? \n\nA few options:\n1. **Give me the full company name** if \"Edra\" might be a shortened version\n2. **Search my postings** - I can show you all the companies you've saved and you can identify which one you meant\n3. **Tell me the job title** - if you remember what position at Edra you were looking at\n\nWhich would help?",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [],
+      "steps": 1,
+      "cost": 0.002424,
+      "seconds": 1.94
+    }
+  ]
+}

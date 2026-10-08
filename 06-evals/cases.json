@@ -56,9 +56,10 @@
   {"id": "unlimited-pto", "category": "text",
    "question": "Which postings offer unlimited PTO or vacation?",
    "must_include": ["bevel", "guac", "oso"],
-   "must_not_include": ["sola", "edra", "lorum"],
+   "must_not_include": [],
    "expected_tools": ["search_posting_text"],
-   "notes": "Sola is 4 weeks, Edra 'flexible paid time off', Lorum 'flexible vacation policy': flexible isn't unlimited."},
+   "rubric": "Fail only if the answer claims a posting other than Bevel, Guac, or Oso offers unlimited PTO or vacation. A 'flexible' PTO or vacation policy is not a claim of unlimited PTO, so listing a posting as flexible, or as not explicitly unlimited, passes.",
+   "notes": "Sola is 4 weeks, Edra 'flexible paid time off', Lorum 'flexible vacation policy': flexible isn't unlimited. These used to be in must_not_include, but the baseline answer named Lorum as 'a flexible vacation policy', separate from the unlimited ones, and failed. The judge grades that distinction; must_include still checks Bevel, Guac, and Oso."},
 
   {"id": "one-medical", "category": "text",
    "question": "Which postings include a One Medical membership?",
@@ -132,5 +133,20 @@
    "must_include": [],
    "must_not_include": [],
    "expected_tools": ["search_posting_text"],
-   "notes": "None. Hazel is hybrid, Lorum is in office 3 days a week, Oso has 'flexible work options', and Edra, Guac, and Sola are in office 5 days. A correct answer says none are fully remote; string checks can't tell 'Hazel is remote' from 'Hazel is hybrid, not remote'."}
+   "rubric": "No posting is fully remote. Pass if the answer says no posting is remote, or that it found no remote postings (for example, 'the results don't show any fully remote postings'). Fail only if it calls a posting remote or fully remote. Describing postings as hybrid, flexible, or in-office is fine, and the answer doesn't need to mention any particular posting.",
+   "notes": "None. Hazel is hybrid, Lorum is in office 3 days a week, Oso has 'flexible work options', and Edra, Guac, and Sola are in office 5 days. A correct answer says none are fully remote; string checks can't tell 'Hazel is remote' from 'Hazel is hybrid, not remote', so the judge grades it."},
+
+  {"id": "compare-giga-sola", "category": "open-ended",
+   "question": "Compare the Giga and Sola postings.",
+   "must_include": [],
+   "must_not_include": [],
+   "rubric": "Giga: salary $160K-$250K, 1-3 years of experience. Sola: salary $150K-$300K, no years of experience stated, in the office 5 days a week in NYC. Pass if the answer gives both salary ranges correctly and Giga's experience correctly, and doesn't give Sola a years-of-experience requirement. For Giga, '1-3 years', '1+ years', and 'at least 1 year' are all correct. Fail if any salary or experience number is wrong or made up.",
+   "notes": "From giga.txt and sola.txt. Sola's min_years is null, so a number for it is a guess."},
+
+  {"id": "compare-edra-guac", "category": "open-ended",
+   "question": "Which pays more, Edra or Guac, and how do their experience requirements compare?",
+   "must_include": [],
+   "must_not_include": [],
+   "rubric": "Edra: salary $200K-$300K, 3+ years. Guac: salary $150K-$250K, 3+ years. Pass if the answer says Edra pays more (higher at both ends of the range) and that both ask for 3+ years. Fail if it says Guac pays more, calls them equal, gets a number wrong, or says their experience requirements differ.",
+   "notes": "From edra.txt and guac.txt."}
 ]

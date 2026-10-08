@@ -1,0 +1,45 @@
+{
+  "label": "min-years-y3-2",
+  "run_at": "2026-10-08T14:35:14",
+  "passed": 1,
+  "total": 1,
+  "pass_rate": 1.0,
+  "by_category": {
+    "structured": {
+      "passed": 1,
+      "total": 1
+    }
+  },
+  "cost": 0.005001,
+  "judge_cost": 0,
+  "seconds": 2.71,
+  "avg_steps": 2.0,
+  "avg_seconds": 2.71,
+  "cases": [
+    {
+      "id": "years-3-plus",
+      "category": "structured",
+      "question": "Which postings require at least 3 years of experience?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "Here are the postings that require at least 3 years of experience:\n\n1. **Edra** - Software Engineer - Back End\n   - Salary: $200,000 - $300,000\n   - Years: 3\n\n2. **Guac** - Backend Engineer\n   - Salary: $150,000 - $250,000\n   - Years: 3\n\n3. **Oso** - Software Engineer\n   - Salary: $140,000 - $220,000\n   - Years: 4\n\n4. **Lorum** - Software Engineer (Backend)\n   - Salary: Not listed\n   - Years: 3",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "min_years": 3
+          },
+          "result": "[{\"id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"salary_min\": 200000, \"salary_max\": 300000, \"min_years\": 3}, {\"id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"salary_min\": 150000, \"salary_max\": 250000, \"min_years\": 3}, {\"id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"salary_min\": 140000, \"salary_max\": 220000, \"min_years\": 4}, {\"id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"salary_min\": null, \"salary_max\": null, \"min_years\": 3}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.005001,
+      "seconds": 2.71
+    }
+  ]
+}

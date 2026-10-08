@@ -1,0 +1,731 @@
+{
+  "label": "min-years",
+  "run_at": "2026-10-08T14:36:45",
+  "passed": 21,
+  "total": 22,
+  "pass_rate": 0.9545454545454546,
+  "by_category": {
+    "structured": {
+      "passed": 5,
+      "total": 5
+    },
+    "text": {
+      "passed": 5,
+      "total": 5
+    },
+    "multi-step": {
+      "passed": 4,
+      "total": 4
+    },
+    "unanswerable": {
+      "passed": 2,
+      "total": 3
+    },
+    "tricky": {
+      "passed": 3,
+      "total": 3
+    },
+    "open-ended": {
+      "passed": 2,
+      "total": 2
+    }
+  },
+  "cost": 0.16228099999999998,
+  "judge_cost": 0.006592,
+  "seconds": 80.25000000000001,
+  "avg_steps": 2.3181818181818183,
+  "avg_seconds": 3.6477272727272734,
+  "cases": [
+    {
+      "id": "kubernetes",
+      "category": "structured",
+      "question": "Which postings ask for Kubernetes?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "Four postings ask for Kubernetes:\n\n1. **OpenAI** - Software Engineer, Observability (ID: 9)\n   - Salary: $266,000 - $445,000\n\n2. **Sola** - Software Engineer, Backend (ID: 11)\n   - Salary: $150,000 - $300,000\n\n3. **Lorum** - Software Engineer (Backend) (ID: 7)\n   - Requires 3+ years of experience\n\n4. **Mistral** - Software Engineer, Backend (ID: 8)",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "skill": "kubernetes"
+          },
+          "result": "[{\"id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"salary_min\": 266000, \"salary_max\": 445000, \"min_years\": null}, {\"id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"salary_min\": 150000, \"salary_max\": 300000, \"min_years\": null}, {\"id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"salary_min\": null, \"salary_max\": null, \"min_years\": 3}, {\"id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"salary_min\": null, \"salary_max\": null, \"min_years\": null}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.004876999999999999,
+      "seconds": 2.53
+    },
+    {
+      "id": "python",
+      "category": "structured",
+      "question": "Which postings list Python as a skill?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "The following postings list Python as a skill:\n\n1. **Edra** - Software Engineer - Back End (ID: 3)\n   - Salary: $200,000 - $300,000\n   - Experience required: 3+ years\n\n2. **Sola** - Software Engineer, Backend (ID: 11)\n   - Salary: $150,000 - $300,000\n   - Experience required: Not specified\n\n3. **Guac** - Backend Engineer (ID: 5)\n   - Salary: $150,000 - $250,000\n   - Experience required: 3+ years\n\n4. **Bevel** - Backend Engineer (ID: 1)\n   - Salary: $150,000 - $190,000\n   - Experience required: 2+ years\n\n5. **Mistral** - Software Engineer, Backend (ID: 8)\n   - Salary: Not listed\n   - Experience required: Not specified\n\nWould you like more details about any of these postings?",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "skill": "python"
+          },
+          "result": "[{\"id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"salary_min\": 200000, \"salary_max\": 300000, \"min_years\": 3}, {\"id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"salary_min\": 150000, \"salary_max\": 300000, \"min_years\": null}, {\"id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"salary_min\": 150000, \"salary_max\": 250000, \"min_years\": 3}, {\"id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"salary_min\": 150000, \"salary_max\": 190000, \"min_years\": 2}, {\"id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"salary_min\": null, \"salary_max\": null, \"min_years\": null}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.005521,
+      "seconds": 3.16
+    },
+    {
+      "id": "salary-280k",
+      "category": "structured",
+      "question": "Which postings have a salary range that reaches at least $280k?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "There are 3 postings with a salary range that reaches at least $280k:\n\n1. **OpenAI** - Software Engineer, Observability\n   - Salary: $266,000 - $445,000\n\n2. **Edra** - Software Engineer - Back End\n   - Salary: $200,000 - $300,000\n   - Requires: 3+ years of experience\n\n3. **Sola** - Software Engineer, Backend\n   - Salary: $150,000 - $300,000",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "min_salary": 280000
+          },
+          "result": "[{\"id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"salary_min\": 266000, \"salary_max\": 445000, \"min_years\": null}, {\"id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"salary_min\": 200000, \"salary_max\": 300000, \"min_years\": 3}, {\"id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"salary_min\": 150000, \"salary_max\": 300000, \"min_years\": null}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.004825,
+      "seconds": 2.39
+    },
+    {
+      "id": "years-3-plus",
+      "category": "structured",
+      "question": "Which postings require at least 3 years of experience?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "There are 4 postings that require at least 3 years of experience:\n\n1. **Edra** - Software Engineer - Back End\n   - Salary: $200,000 - $300,000\n   - Years required: 3\n\n2. **Guac** - Backend Engineer\n   - Salary: $150,000 - $250,000\n   - Years required: 3\n\n3. **Oso** - Software Engineer\n   - Salary: $140,000 - $220,000\n   - Years required: 4\n\n4. **Lorum** - Software Engineer (Backend)\n   - Salary: Not listed\n   - Years required: 3",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "min_years": 3
+          },
+          "result": "[{\"id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"salary_min\": 200000, \"salary_max\": 300000, \"min_years\": 3}, {\"id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"salary_min\": 150000, \"salary_max\": 250000, \"min_years\": 3}, {\"id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"salary_min\": 140000, \"salary_max\": 220000, \"min_years\": 4}, {\"id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"salary_min\": null, \"salary_max\": null, \"min_years\": 3}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.005031,
+      "seconds": 2.69
+    },
+    {
+      "id": "highest-salary",
+      "category": "structured",
+      "question": "Which posting has the highest top of its salary range?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "The posting with the highest top of its salary range is **OpenAI - Software Engineer, Observability** (ID: 9) with a salary_max of **$445,000**.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {},
+          "result": "[{\"id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"salary_min\": 266000, \"salary_max\": 445000, \"min_years\": null}, {\"id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"salary_min\": 200000, \"salary_max\": 300000, \"min_years\": 3}, {\"id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"salary_min\": 150000, \"salary_max\": 300000, \"min_years\": null}, {\"id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"salary_min\": 160000, \"salary_max\": 250000, \"min_years\": 1}, {\"id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"salary_min\": 150000, \"salary_max\": 250000, \"min_years\": 3}, {\"id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"salary_min\": 150000, \"salary_max\": 250000, \"min_years\": null}, {\"id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"salary_min\": 140000, \"salary_max\": 220000, \"min_years\": 4}, {\"id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"salary_min\": 150000, \"salary_max\": 200000, \"min_years\": 2}, {\"id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"salary_min\": 150000, \"salary_max\": 190000, \"min_years\": 2}, {\"id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"salary_min\": null, \"salary_max\": null, \"min_years\": 3}, {\"id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"salary_min\": null, \"salary_max\": null, \"min_years\": null}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.004668,
+      "seconds": 1.74
+    },
+    {
+      "id": "visa",
+      "category": "text",
+      "question": "Which postings offer visa sponsorship?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "Based on the search results, **Bevel** explicitly offers visa sponsorship. According to their Backend Engineer posting [chunk 9]: \"Visa sponsorship if applicable\"\n\nThis is the only posting in your saved job postings that specifically mentions visa sponsorship in the benefits.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "visa sponsorship"
+          },
+          "result": "[{\"chunk_id\": 9, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.322, \"text\": \"Benefits\\n\\nExciting work environment\\nCompetitive salary & equity\\nHealth, dental, and vision insurance\\nCommuter benefits\\nPaid lunch and dinner when in the office\\nWork-life balance\\nPet-friendly office in Chelsea\\nUnlimited PTO\\n401k plan\\nVisa sponsorship if applicable\"}, {\"chunk_id\": 170, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.285, \"text\": \"Sola today powers enterprise workflows in Fortune 100 companies, with a horizontal platform that works across healthcare, finance, legal, logistics, and more. We\\u2019ve raised $21M in funding from a16z, Conviction (Sarah Guo), and Y Combinator, and are looking for passionate engineers to help us continue to scale.\"}, {\"chunk_id\": 124, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.266, \"text\": \"What we offer\\nWe offer a comprehensive benefits package designed to support your well-being, growth, and work-life balance. Benefits vary by country and may include healthcare coverage, parental leave, retirement plans, relocation support, wellness programs, meal and transportation allowances, and other location-specific perks.\"}, {\"chunk_id\": 84, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.23, \"text\": \"How We Hire\\n\\n15-min intro\\nFounder call\\nTechnical interview\\nOnsite \\u2014 meet the team\\nOffer\\n\\nCompensation Range: $150K - $250K\"}, {\"chunk_id\": 18, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.217, \"text\": \"Collaborating with product data and business stakeholders to ship features that directly impact Current\\u2019s members\\nAbout You\"}, {\"chunk_id\": 62, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.213, \"text\": \"We've brought together an exceptional team from Palantir, BCG, Oxford, Cambridge, and MIT to solve intellectually challenging problems and tackle food insecurity and waste with technology.\\nWe're looking for talented engineers in NYC to join our mission.\\nAbout the Role\"}, {\"chunk_id\": 104, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.211, \"text\": \"Benefits\\nOpportunity to travel (if applicable)\\nFlexible vacation policy\\nPrivate Healthcare\\nEmployee stock ownership (ESOP)\\nFlexible working and autonomy\\nPay it forward days - we offer 2 annual pay it forward days where you can take time to volunteer for a charitable cause that is important to you.\"}, {\"chunk_id\": 142, \"posting_id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"similarity\": 0.21, \"text\": \"OpenAI Global Applicant Privacy Policy\\n\\nAt OpenAI, we believe artificial intelligence has the potential to help people solve immense global challenges, and we want the upside of AI to be widely shared. Join us in shaping the future of technology.\\n\\nCompensation Range: $266K - $445K\"}, {\"chunk_id\": 148, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.207, \"text\": \"Capital: We're backed by the world\\u2019s best investors, including Sequoia, Felicis, and a standout group of infrastructure founders and operators: Olivier Pomel (Founder, Datadog), Dev Ittycheria (CEO, MongoDB), Armon Dadgar (Founder, HashiCorp), Edith Harbaugh (Founder, LaunchDarkly), Guy Podjarny (Founder, Snyk), Paul Copplestone (Founder, Supabase), Christina Cacioppo (Founder, Vanta), and Calvin French-Owen (Founder, Segment). \"}, {\"chunk_id\": 141, \"posting_id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"similarity\": 0.207, \"text\": \"We are committed to providing reasonable accommodations to applicants with disabilities, and requests can be made via this link.\"}, {\"chunk_id\": 55, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.195, \"text\": \"You Might Be a Fit If You\\nHave 1-3 years of professional software engineering experience\\nAre curious and ask good questions\\u2014you want to understand why things work, not just how\\nCan take feedback well and iterate quickly\\nPrefer shipping over perfection but still care about quality\"}, {\"chunk_id\": 162, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.192, \"text\": \"Benefits\\n\\nIn addition to cash compensation, Oso offers a Total Rewards package that includes equity grants, health benefits, and more:\"}, {\"chunk_id\": 125, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.19, \"text\": \"For the most up-to-date details on benefits available in your location, please refer to our Benefits page.\"}, {\"chunk_id\": 11, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.187, \"text\": \"Software Engineer\\n\\nNew York, NY About the job\\nSOFTWARE ENGINEER\"}, {\"chunk_id\": 143, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.186, \"text\": \"Software Engineer\\n\\nNew York, NYAbout the job\\nOld problem, new $25B+ market\"}, {\"chunk_id\": 79, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.186, \"text\": \"You'll work directly with the founders and customers. Code you ship today is in front of operators tomorrow.\"}, {\"chunk_id\": 43, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.186, \"text\": \"Software Engineer I / II\\n\\nNew York, NY About the job\\nAbout Giga\"}, {\"chunk_id\": 76, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.184, \"text\": \"We've raised more than $2M, are rapidly scaling, and serve some of the biggest consumer brands including Bogg Bag, Ultra, and OneSkin. You'll join a small, senior engineering team working directly with the founders.\"}, {\"chunk_id\": 22, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.183, \"text\": \"Generous parental leave policy\\nCommuter benefits\\nFitness benefits\\nHealthcare and Dependent care FSA benefit\\nEmployee Assistance Programs focused on mental health\\nHealthcare advocacy program for all employees\\nAccess to mental health apps\\nTeam building activities\"}, {\"chunk_id\": 154, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.183, \"text\": \"Plus, help build a company and community from the ground up by wearing other hats, including:\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.006352999999999999,
+      "seconds": 8.99
+    },
+    {
+      "id": "office-5-days",
+      "category": "text",
+      "question": "Which postings require being in the office 5 days a week?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "Based on the search results, there are **two postings** that require 5 days a week office attendance:\n\n1. **Guac - Backend Engineer** [chunk 72]: \"This is an in-person 5 days a week, full time job in NYC.\"\n\n2. **Edra - Software Engineer - Back End** [chunk 41]: \"We work together in person five days a week from our offices in the West Village (New York) and Holborn (London).\"\n\n3. **Sola - Software Engineer, Backend** [chunk 178]: \"You're open to working 5 days a week out of our office in NYC (we'll cover relocation!)\"",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "5 days a week office"
+          },
+          "result": "[{\"chunk_id\": 72, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.677, \"text\": \"Note: this is an in-person 5 days a week, full time job in NYC.\"}, {\"chunk_id\": 41, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.575, \"text\": \"We work together in person five days a week from our offices in the West Village (New York) and Holborn (London).\"}, {\"chunk_id\": 85, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.51, \"text\": \"Software Engineer (Backend)\\n\\nNew York, NY About the job\\nLocation: New York - in office 3 days a week\"}, {\"chunk_id\": 23, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.421, \"text\": \"Our modern NYC based office with open floor plan, stocked kitchen, and catered lunches\"}, {\"chunk_id\": 105, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.404, \"text\": \"Wellness days - we believe you can only work your best when you feel your best, and we know working at Lorum is intense, so we offer 3 wellness days every quarter where you can take time to re-energise.\"}, {\"chunk_id\": 9, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.355, \"text\": \"Benefits\\n\\nExciting work environment\\nCompetitive salary & equity\\nHealth, dental, and vision insurance\\nCommuter benefits\\nPaid lunch and dinner when in the office\\nWork-life balance\\nPet-friendly office in Chelsea\\nUnlimited PTO\\n401k plan\\nVisa sponsorship if applicable\"}, {\"chunk_id\": 143, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.331, \"text\": \"Software Engineer\\n\\nNew York, NYAbout the job\\nOld problem, new $25B+ market\"}, {\"chunk_id\": 104, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.323, \"text\": \"Benefits\\nOpportunity to travel (if applicable)\\nFlexible vacation policy\\nPrivate Healthcare\\nEmployee stock ownership (ESOP)\\nFlexible working and autonomy\\nPay it forward days - we offer 2 annual pay it forward days where you can take time to volunteer for a charitable cause that is important to you.\"}, {\"chunk_id\": 178, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.319, \"text\": \"You\\u2019re proficient across all layers on the backend, from infra to CI/CD to DB to backend service architecture\\nYou\\u2019re fluent with the latest AI coding tools and are always looking for ways to move faster\\nYou\\u2019re open to working 5 days a week out of our office in NYC (we\\u2019ll cover relocation!)\"}, {\"chunk_id\": 163, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.306, \"text\": \"Competitive health, dental, and vision coverage\\nMental healthcare to all employees and anyone in their family through Spring Health\\nUnlimited access to financial advisors through Northstar\\nEquity Package\\nUnlimited paid time off (PTO)\\nPaid parental leave\\nFlexible work options\\nOne Medical Membership\"}, {\"chunk_id\": 185, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.292, \"text\": \"We offer comprehensive medical, dental, and vision benefits, 401(k) matching, daily meals together in the office, flexible PTO (4 weeks per year), and relocation support for candidates not already based in NYC.\\n\\nCompensation Range: $150K - $300K\"}, {\"chunk_id\": 24, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.283, \"text\": \"Software Engineer - Back End (New York)\\n\\nNew York, NY\\nAbout the job\\nAbout Edra\"}, {\"chunk_id\": 40, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.276, \"text\": \"Competitive base salary & meaningful equity \\nTop tier health, dental, & vision plans:\\nTop plans with 100% premium coverage in the US (and a One Medical membership)\\nPrivate medical & dental coverage in the UK \\nFlexible paid time off \\nLunch provided in office most days, snacks & drinks too\\nA stipend to set up your workspace\\nA Few Details\"}, {\"chunk_id\": 70, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.262, \"text\": \"What We Offer\\nFirst-hand experience building an early-stage startup\\nCompensation: $150k\\u2013$250k base + competitive equity\\nFully employer-paid healthcare (medical, dental, and vision)\\nUnlimited vacation days\\nFully covered food expenses in the office (lunch/dinner)\\nFree Equinox membership\"}, {\"chunk_id\": 50, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.256, \"text\": \"This is a role where you'll contribute to real problems from day one. We expect you to ramp up quickly, take ownership of your work, and operate with increasing independence as you learn the codebase.\"}, {\"chunk_id\": 43, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.234, \"text\": \"Software Engineer I / II\\n\\nNew York, NY About the job\\nAbout Giga\"}, {\"chunk_id\": 164, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.23, \"text\": \"Quarterly hackathons... and prizes!\\nFree team lunches every month\"}, {\"chunk_id\": 64, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.23, \"text\": \"Build efficient ETL pipelines to handle billions of rows of data, multiple times per day\"}, {\"chunk_id\": 57, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.228, \"text\": \"Perks & Benefits\\n\\nCompetitive base + bonus + equity\\nCatered lunch daily\\nDinner stipend\\n$500/month wellness & commuter benefit (gym, fitness classes, mental health)\\n401(k) plan\\nMedical, dental, and vision coverage\"}, {\"chunk_id\": 106, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.226, \"text\": \"Software Engineer, Backend\\n\\nNew York, NYAbout the job\\nAbout Mistral\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.006821,
+      "seconds": 3.54
+    },
+    {
+      "id": "parental-leave",
+      "category": "text",
+      "question": "Which postings mention parental leave?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "The following postings mention parental leave:\n\n1. **Current - Software Engineer** [chunk 22]: Offers a \"Generous parental leave policy\"\n\n2. **Oso - Software Engineer** [chunk 163]: Offers \"Paid parental leave\"\n\n3. **Mistral - Software Engineer, Backend** [chunk 124]: Mentions that their comprehensive benefits package \"may include healthcare coverage, parental leave, retirement plans, relocation support, wellness programs, meal and transportation allowances, and other location-specific perks\" (varies by country)",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "parental leave"
+          },
+          "result": "[{\"chunk_id\": 22, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.504, \"text\": \"Generous parental leave policy\\nCommuter benefits\\nFitness benefits\\nHealthcare and Dependent care FSA benefit\\nEmployee Assistance Programs focused on mental health\\nHealthcare advocacy program for all employees\\nAccess to mental health apps\\nTeam building activities\"}, {\"chunk_id\": 163, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.403, \"text\": \"Competitive health, dental, and vision coverage\\nMental healthcare to all employees and anyone in their family through Spring Health\\nUnlimited access to financial advisors through Northstar\\nEquity Package\\nUnlimited paid time off (PTO)\\nPaid parental leave\\nFlexible work options\\nOne Medical Membership\"}, {\"chunk_id\": 104, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.275, \"text\": \"Benefits\\nOpportunity to travel (if applicable)\\nFlexible vacation policy\\nPrivate Healthcare\\nEmployee stock ownership (ESOP)\\nFlexible working and autonomy\\nPay it forward days - we offer 2 annual pay it forward days where you can take time to volunteer for a charitable cause that is important to you.\"}, {\"chunk_id\": 124, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.238, \"text\": \"What we offer\\nWe offer a comprehensive benefits package designed to support your well-being, growth, and work-life balance. Benefits vary by country and may include healthcare coverage, parental leave, retirement plans, relocation support, wellness programs, meal and transportation allowances, and other location-specific perks.\"}, {\"chunk_id\": 72, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.225, \"text\": \"Note: this is an in-person 5 days a week, full time job in NYC.\"}, {\"chunk_id\": 56, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.182, \"text\": \"Want to grow at a startup where you'll have real responsibility early\"}, {\"chunk_id\": 41, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.17, \"text\": \"We work together in person five days a week from our offices in the West Village (New York) and Holborn (London).\"}, {\"chunk_id\": 139, \"posting_id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"similarity\": 0.166, \"text\": \"Background checks for applicants will be administered in accordance with applicable law, and qualified applicants with arrest or conviction records will be considered for employment consistent with those laws, including the San Francisco Fair Chance Ordinance, the Los Angeles County Fair Chance Ordinance for Employers, and the California Fair Chance Act, for US-based candidates. For unincorporated Los Angeles County workers: we reasonably believe that criminal history may have a direct, adverse and negative relationship with the following job duties, potentially resulting in the withdrawal of a conditional offer of employment: protect computer hardware entrusted to you from theft, loss or damage; return all computer hardware in your possession (including the data contained therein) upon termination of employment or end of assignment; and maintain the confidentiality of proprietary, confidential, and non-public information. In addition, job duties require access to secure and protected information technology systems and related data security obligations.\"}, {\"chunk_id\": 141, \"posting_id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"similarity\": 0.165, \"text\": \"We are committed to providing reasonable accommodations to applicants with disabilities, and requests can be made via this link.\"}, {\"chunk_id\": 185, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.157, \"text\": \"We offer comprehensive medical, dental, and vision benefits, 401(k) matching, daily meals together in the office, flexible PTO (4 weeks per year), and relocation support for candidates not already based in NYC.\\n\\nCompensation Range: $150K - $300K\"}, {\"chunk_id\": 157, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.156, \"text\": \"Implemented incremental forward chaining to cache authorization responses for deeply nested recursive queries\"}, {\"chunk_id\": 21, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.148, \"text\": \"Benefits\\nCompetitive salary\\nMeaningful equity in the form of stock options\\n401(k) plan\\nDiscretionary performance bonus program\\nBiannual performance reviews\\nMedical, Dental and Vision premiums covered at 100% for you and your dependents\\nFlexible time off and paid holidays\"}, {\"chunk_id\": 125, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.144, \"text\": \"For the most up-to-date details on benefits available in your location, please refer to our Benefits page.\"}, {\"chunk_id\": 39, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.14, \"text\": \"Compensation & Benefits\\n\\nEdra offers generous compensation and benefits in both New York & London:\"}, {\"chunk_id\": 9, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.139, \"text\": \"Benefits\\n\\nExciting work environment\\nCompetitive salary & equity\\nHealth, dental, and vision insurance\\nCommuter benefits\\nPaid lunch and dinner when in the office\\nWork-life balance\\nPet-friendly office in Chelsea\\nUnlimited PTO\\n401k plan\\nVisa sponsorship if applicable\"}, {\"chunk_id\": 57, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.126, \"text\": \"Perks & Benefits\\n\\nCompetitive base + bonus + equity\\nCatered lunch daily\\nDinner stipend\\n$500/month wellness & commuter benefit (gym, fitness classes, mental health)\\n401(k) plan\\nMedical, dental, and vision coverage\"}, {\"chunk_id\": 23, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.123, \"text\": \"Our modern NYC based office with open floor plan, stocked kitchen, and catered lunches\"}, {\"chunk_id\": 85, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.12, \"text\": \"Software Engineer (Backend)\\n\\nNew York, NY About the job\\nLocation: New York - in office 3 days a week\"}, {\"chunk_id\": 167, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.118, \"text\": \"Oso is an equal opportunity employer. All applicants will be considered for employment regardless of race, color, national origin, religion, sex, age, disability, sexual orientation, gender identity, veteran or disability status.\"}, {\"chunk_id\": 145, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.117, \"text\": \"We see a world where developers never roll their own authorization again, and instead say, \\\"Just use Oso\\\" \\u2013 the same way you might say, \\\"Oh, you should just use Postgres for that.\\\" In doing so, we're creating the $25B+ authorization market.\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.006731,
+      "seconds": 3.11
+    },
+    {
+      "id": "unlimited-pto",
+      "category": "text",
+      "question": "Which postings offer unlimited PTO or vacation?",
+      "passed": true,
+      "failures": [],
+      "judge": {
+        "pass": true,
+        "reason": "The answer correctly identifies all three postings (Bevel, Guac, and Oso) that offer unlimited PTO or vacation, and only lists those three postings as offering unlimited time off.",
+        "cost": 0.001476
+      },
+      "answer": "Based on the search results, here are the postings that offer unlimited PTO or vacation:\n\n1. **Oso - Software Engineer** [chunk 163]: Offers **unlimited paid time off (PTO)**\n\n2. **Bevel - Backend Engineer** [chunk 9]: Offers **unlimited PTO**\n\n3. **Guac - Backend Engineer** [chunk 70]: Offers **unlimited vacation days**\n\nThese three postings explicitly mention unlimited time off policies.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "unlimited PTO vacation"
+          },
+          "result": "[{\"chunk_id\": 163, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.511, \"text\": \"Competitive health, dental, and vision coverage\\nMental healthcare to all employees and anyone in their family through Spring Health\\nUnlimited access to financial advisors through Northstar\\nEquity Package\\nUnlimited paid time off (PTO)\\nPaid parental leave\\nFlexible work options\\nOne Medical Membership\"}, {\"chunk_id\": 104, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.442, \"text\": \"Benefits\\nOpportunity to travel (if applicable)\\nFlexible vacation policy\\nPrivate Healthcare\\nEmployee stock ownership (ESOP)\\nFlexible working and autonomy\\nPay it forward days - we offer 2 annual pay it forward days where you can take time to volunteer for a charitable cause that is important to you.\"}, {\"chunk_id\": 9, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.401, \"text\": \"Benefits\\n\\nExciting work environment\\nCompetitive salary & equity\\nHealth, dental, and vision insurance\\nCommuter benefits\\nPaid lunch and dinner when in the office\\nWork-life balance\\nPet-friendly office in Chelsea\\nUnlimited PTO\\n401k plan\\nVisa sponsorship if applicable\"}, {\"chunk_id\": 185, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.395, \"text\": \"We offer comprehensive medical, dental, and vision benefits, 401(k) matching, daily meals together in the office, flexible PTO (4 weeks per year), and relocation support for candidates not already based in NYC.\\n\\nCompensation Range: $150K - $300K\"}, {\"chunk_id\": 72, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.335, \"text\": \"Note: this is an in-person 5 days a week, full time job in NYC.\"}, {\"chunk_id\": 57, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.303, \"text\": \"Perks & Benefits\\n\\nCompetitive base + bonus + equity\\nCatered lunch daily\\nDinner stipend\\n$500/month wellness & commuter benefit (gym, fitness classes, mental health)\\n401(k) plan\\nMedical, dental, and vision coverage\"}, {\"chunk_id\": 164, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.296, \"text\": \"Quarterly hackathons... and prizes!\\nFree team lunches every month\"}, {\"chunk_id\": 83, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.276, \"text\": \"Comp & Benefits\\n\\n$150\\u2013250K base\\n0.15\\u20130.5% equity\\nTop-tier health, dental, vision\\nHybrid in NYC (ask about our pool table)\"}, {\"chunk_id\": 145, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.276, \"text\": \"We see a world where developers never roll their own authorization again, and instead say, \\\"Just use Oso\\\" \\u2013 the same way you might say, \\\"Oh, you should just use Postgres for that.\\\" In doing so, we're creating the $25B+ authorization market.\"}, {\"chunk_id\": 22, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.272, \"text\": \"Generous parental leave policy\\nCommuter benefits\\nFitness benefits\\nHealthcare and Dependent care FSA benefit\\nEmployee Assistance Programs focused on mental health\\nHealthcare advocacy program for all employees\\nAccess to mental health apps\\nTeam building activities\"}, {\"chunk_id\": 162, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.27, \"text\": \"Benefits\\n\\nIn addition to cash compensation, Oso offers a Total Rewards package that includes equity grants, health benefits, and more:\"}, {\"chunk_id\": 124, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.259, \"text\": \"What we offer\\nWe offer a comprehensive benefits package designed to support your well-being, growth, and work-life balance. Benefits vary by country and may include healthcare coverage, parental leave, retirement plans, relocation support, wellness programs, meal and transportation allowances, and other location-specific perks.\"}, {\"chunk_id\": 70, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.258, \"text\": \"What We Offer\\nFirst-hand experience building an early-stage startup\\nCompensation: $150k\\u2013$250k base + competitive equity\\nFully employer-paid healthcare (medical, dental, and vision)\\nUnlimited vacation days\\nFully covered food expenses in the office (lunch/dinner)\\nFree Equinox membership\"}, {\"chunk_id\": 23, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.252, \"text\": \"Our modern NYC based office with open floor plan, stocked kitchen, and catered lunches\"}, {\"chunk_id\": 105, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.232, \"text\": \"Wellness days - we believe you can only work your best when you feel your best, and we know working at Lorum is intense, so we offer 3 wellness days every quarter where you can take time to re-energise.\"}, {\"chunk_id\": 175, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.222, \"text\": \"What You'll Do\\nOwn systems that automate repetitive work across browser and desktop, handling concurrency, reliability, and observability at scale (millions of executions per month)\\nCollaborate with our CTO and ML research partners to bring state-of-the-art agentic workflows into production\"}, {\"chunk_id\": 142, \"posting_id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"similarity\": 0.216, \"text\": \"OpenAI Global Applicant Privacy Policy\\n\\nAt OpenAI, we believe artificial intelligence has the potential to help people solve immense global challenges, and we want the upside of AI to be widely shared. Join us in shaping the future of technology.\\n\\nCompensation Range: $266K - $445K\"}, {\"chunk_id\": 125, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.215, \"text\": \"For the most up-to-date details on benefits available in your location, please refer to our Benefits page.\"}, {\"chunk_id\": 21, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.21, \"text\": \"Benefits\\nCompetitive salary\\nMeaningful equity in the form of stock options\\n401(k) plan\\nDiscretionary performance bonus program\\nBiannual performance reviews\\nMedical, Dental and Vision premiums covered at 100% for you and your dependents\\nFlexible time off and paid holidays\"}, {\"chunk_id\": 41, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.179, \"text\": \"We work together in person five days a week from our offices in the West Village (New York) and Holborn (London).\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.006665,
+      "seconds": 2.86
+    },
+    {
+      "id": "one-medical",
+      "category": "text",
+      "question": "Which postings include a One Medical membership?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "Based on the search results, **two postings include a One Medical membership**:\n\n1. **Oso** - Software Engineer [chunk 163]: Explicitly lists \"One Medical Membership\" as a benefit\n2. **Edra** - Software Engineer - Back End [chunk 40]: Includes \"Top plans with 100% premium coverage in the US (and a One Medical membership)\"",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "One Medical membership"
+          },
+          "result": "[{\"chunk_id\": 163, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.456, \"text\": \"Competitive health, dental, and vision coverage\\nMental healthcare to all employees and anyone in their family through Spring Health\\nUnlimited access to financial advisors through Northstar\\nEquity Package\\nUnlimited paid time off (PTO)\\nPaid parental leave\\nFlexible work options\\nOne Medical Membership\"}, {\"chunk_id\": 40, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.34, \"text\": \"Competitive base salary & meaningful equity \\nTop tier health, dental, & vision plans:\\nTop plans with 100% premium coverage in the US (and a One Medical membership)\\nPrivate medical & dental coverage in the UK \\nFlexible paid time off \\nLunch provided in office most days, snacks & drinks too\\nA stipend to set up your workspace\\nA Few Details\"}, {\"chunk_id\": 83, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.311, \"text\": \"Comp & Benefits\\n\\n$150\\u2013250K base\\n0.15\\u20130.5% equity\\nTop-tier health, dental, vision\\nHybrid in NYC (ask about our pool table)\"}, {\"chunk_id\": 70, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.281, \"text\": \"What We Offer\\nFirst-hand experience building an early-stage startup\\nCompensation: $150k\\u2013$250k base + competitive equity\\nFully employer-paid healthcare (medical, dental, and vision)\\nUnlimited vacation days\\nFully covered food expenses in the office (lunch/dinner)\\nFree Equinox membership\"}, {\"chunk_id\": 104, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.267, \"text\": \"Benefits\\nOpportunity to travel (if applicable)\\nFlexible vacation policy\\nPrivate Healthcare\\nEmployee stock ownership (ESOP)\\nFlexible working and autonomy\\nPay it forward days - we offer 2 annual pay it forward days where you can take time to volunteer for a charitable cause that is important to you.\"}, {\"chunk_id\": 22, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.265, \"text\": \"Generous parental leave policy\\nCommuter benefits\\nFitness benefits\\nHealthcare and Dependent care FSA benefit\\nEmployee Assistance Programs focused on mental health\\nHealthcare advocacy program for all employees\\nAccess to mental health apps\\nTeam building activities\"}, {\"chunk_id\": 162, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.256, \"text\": \"Benefits\\n\\nIn addition to cash compensation, Oso offers a Total Rewards package that includes equity grants, health benefits, and more:\"}, {\"chunk_id\": 9, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.239, \"text\": \"Benefits\\n\\nExciting work environment\\nCompetitive salary & equity\\nHealth, dental, and vision insurance\\nCommuter benefits\\nPaid lunch and dinner when in the office\\nWork-life balance\\nPet-friendly office in Chelsea\\nUnlimited PTO\\n401k plan\\nVisa sponsorship if applicable\"}, {\"chunk_id\": 164, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.235, \"text\": \"Quarterly hackathons... and prizes!\\nFree team lunches every month\"}, {\"chunk_id\": 57, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.234, \"text\": \"Perks & Benefits\\n\\nCompetitive base + bonus + equity\\nCatered lunch daily\\nDinner stipend\\n$500/month wellness & commuter benefit (gym, fitness classes, mental health)\\n401(k) plan\\nMedical, dental, and vision coverage\"}, {\"chunk_id\": 124, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.232, \"text\": \"What we offer\\nWe offer a comprehensive benefits package designed to support your well-being, growth, and work-life balance. Benefits vary by country and may include healthcare coverage, parental leave, retirement plans, relocation support, wellness programs, meal and transportation allowances, and other location-specific perks.\"}, {\"chunk_id\": 76, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.214, \"text\": \"We've raised more than $2M, are rapidly scaling, and serve some of the biggest consumer brands including Bogg Bag, Ultra, and OneSkin. You'll join a small, senior engineering team working directly with the founders.\"}, {\"chunk_id\": 185, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.213, \"text\": \"We offer comprehensive medical, dental, and vision benefits, 401(k) matching, daily meals together in the office, flexible PTO (4 weeks per year), and relocation support for candidates not already based in NYC.\\n\\nCompensation Range: $150K - $300K\"}, {\"chunk_id\": 145, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.209, \"text\": \"We see a world where developers never roll their own authorization again, and instead say, \\\"Just use Oso\\\" \\u2013 the same way you might say, \\\"Oh, you should just use Postgres for that.\\\" In doing so, we're creating the $25B+ authorization market.\"}, {\"chunk_id\": 142, \"posting_id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"similarity\": 0.195, \"text\": \"OpenAI Global Applicant Privacy Policy\\n\\nAt OpenAI, we believe artificial intelligence has the potential to help people solve immense global challenges, and we want the upside of AI to be widely shared. Join us in shaping the future of technology.\\n\\nCompensation Range: $266K - $445K\"}, {\"chunk_id\": 8, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.191, \"text\": \"A strong bias for action\\nKnow when to ask for help and how to help others\\nExcited about improving the health & fitness of others\"}, {\"chunk_id\": 81, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.191, \"text\": \"You use coding agents to do the work of a much larger team, and you can tell us where they helped and where they made things worse. \\nYou care deeply about how the product ergonomics and UX. \\nFormer or aspiring founders\"}, {\"chunk_id\": 14, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.187, \"text\": \"We work across a broad set of domains, including user-facing products like liquidity offerings and reward programs, infrastructure for machine learning and experimentation, real-time fraud detection and identity protection, and large-scale transaction processing across multiple payment rails.\"}, {\"chunk_id\": 44, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.185, \"text\": \"Giga has recently raised a $61M Series A and has several paying customers, including DoorDash. We\\u2019re building the next generation of customer experience \\u2014 real-time AI agents that can understand emotion, resolve issues instantly, and scale across the world\\u2019s largest enterprises.\"}, {\"chunk_id\": 141, \"posting_id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"similarity\": 0.178, \"text\": \"We are committed to providing reasonable accommodations to applicants with disabilities, and requests can be made via this link.\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.006654,
+      "seconds": 2.88
+    },
+    {
+      "id": "interviewing-visa",
+      "category": "multi-step",
+      "question": "Does the company I'm interviewing with sponsor visas?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "Great news! Yes, **Bevel does sponsor visas**. According to their job posting, they offer \"Visa sponsorship if applicable\" as part of their benefits package [chunk 9].",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "get_applications",
+          "input": {
+            "status": "interviewing"
+          },
+          "result": "[{\"id\": 2, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"status\": \"interviewing\", \"applied_date\": \"2026-09-24\", \"notes\": \"Recruiter screen done, technical next\"}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "search_posting_text",
+          "input": {
+            "posting_id": 1,
+            "query": "visa sponsorship"
+          },
+          "result": "[{\"chunk_id\": 9, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.322, \"text\": \"Benefits\\n\\nExciting work environment\\nCompetitive salary & equity\\nHealth, dental, and vision insurance\\nCommuter benefits\\nPaid lunch and dinner when in the office\\nWork-life balance\\nPet-friendly office in Chelsea\\nUnlimited PTO\\n401k plan\\nVisa sponsorship if applicable\"}, {\"chunk_id\": 10, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.168, \"text\": \"\\u2800\\nBevel celebrates and embraces diversity and is committed to building a team that represents a variety of experiences, backgrounds, and skills. We do not discriminate based on race, color, religion, marital status, age, gender identity, gender expression, sexual orientation, non-disqualifying physical or mental disability, national origin, veteran status, or other applicable legally protected characteristics.\\nCompensation Range: $150K - $190K\"}, {\"chunk_id\": 8, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.109, \"text\": \"A strong bias for action\\nKnow when to ask for help and how to help others\\nExcited about improving the health & fitness of others\"}, {\"chunk_id\": 1, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.092, \"text\": \"Backend Engineer\\n\\nNew York, NY\\nAbout the job\\nAbout Bevel\"}, {\"chunk_id\": 3, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.068, \"text\": \"We\\u2019re a small team of builders and creatives based in NYC. We are extremely passionate about our craft and view Bevel as part of our life\\u2019s work. We care deeply about maintaining harmony in all aspects of life and know when to work hard and when to take breaks.\"}, {\"chunk_id\": 7, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.067, \"text\": \"Requirements\\nAt least 2 years of experience\\nExperience designing, building, and running a large-scale backend system\\nExpertise coding in Typescript or Python\\nStrong intuition for algorithms and working with data\\nBrilliant at math and statistics\\nObsessive with your craft\\nGreat at communicating ideas\"}, {\"chunk_id\": 5, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.048, \"text\": \"Responsibilities\\nShip features across the entire backend stack, from data infra to product endpoints\\nBuild extensible and robust business logic for processing health data\\nPrototype, productionize, and run experiments to improve accuracy, speed, and cost of AI/ML models. \"}, {\"chunk_id\": 6, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.041, \"text\": \"Establish best practices for scalability, security, testing, and ML ops (model versioning, monitoring, alerting)\\nContinuously iterate on the engineering process and culture\"}, {\"chunk_id\": 4, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.011, \"text\": \"Bevel launched in early 2024, and we\\u2019ve been lucky to see incredible growth and support from our users. We\\u2019re looking for incredible Backend Engineers to help us build an ambitious roadmap. You\\u2019ll get an opportunity to shape the future of Bevel and have full ownership and creative freedom to create your life\\u2019s work.\"}, {\"chunk_id\": 2, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": -0.022, \"text\": \"Bevel is the #1 AI Health Companion with over 1 million downloads globally. We help people make smarter decisions about their health every day by bringing together data across sleep, recovery, activity, nutrition, and more, and turning it into real-time, personalized guidance. Whether you're training for something big or just trying to feel better, Bevel helps you move with clarity and confidence.\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 3,
+      "cost": 0.008261000000000001,
+      "seconds": 3.99
+    },
+    {
+      "id": "applications-python",
+      "category": "multi-step",
+      "question": "Among all my applications, which postings list Python as a skill?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "Among your applications, **3 postings list Python as a skill**:\n\n1. **Sola** - Software Engineer, Backend (applied 2026-10-08)\n2. **Bevel** - Backend Engineer (interviewing, applied 2026-09-24)\n3. **Guac** - Backend Engineer (saved, not yet applied)\n\nThe only posting without Python is **Giga** - Software Engineer I / II.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "get_applications",
+          "input": {},
+          "result": "[{\"id\": 5, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"status\": \"applied\", \"applied_date\": \"2026-10-08\", \"notes\": null}, {\"id\": 1, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"status\": \"applied\", \"applied_date\": \"2026-10-01\", \"notes\": \"Applied through the careers page\"}, {\"id\": 2, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"status\": \"interviewing\", \"applied_date\": \"2026-09-24\", \"notes\": \"Recruiter screen done, technical next\"}, {\"id\": 3, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"status\": \"saved\", \"applied_date\": null, \"notes\": \"Strong match on Python, FastAPI, and RAG\"}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 11
+          },
+          "result": "{\"id\": 11, \"slug\": \"sola\", \"company\": \"Sola\", \"ai_company\": true, \"title\": \"Software Engineer, Backend\", \"location\": \"New York, NY\", \"min_years\": null, \"salary_min\": 150000, \"salary_max\": 300000, \"skills\": [\"ai systems\", \"distributed systems\", \"dynamodb\", \"kubernetes\", \"mlops\", \"postgresql\", \"python\", \"temporal\", \"typescript\"], \"application\": {\"status\": \"applied\", \"applied_date\": \"2026-10-08\", \"notes\": null}}",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 4
+          },
+          "result": "{\"id\": 4, \"slug\": \"giga\", \"company\": \"Giga\", \"ai_company\": true, \"title\": \"Software Engineer I / II\", \"location\": \"New York, NY\", \"min_years\": 1, \"salary_min\": 160000, \"salary_max\": 250000, \"skills\": [\"agent infrastructure\", \"api integrations\", \"backend engineering\", \"database design\", \"data pipelines\", \"full-stack development\", \"natural language processing\", \"slack integration\"], \"application\": {\"status\": \"applied\", \"applied_date\": \"2026-10-01\", \"notes\": \"Applied through the careers page\"}}",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 1
+          },
+          "result": "{\"id\": 1, \"slug\": \"bevel\", \"company\": \"Bevel\", \"ai_company\": true, \"title\": \"Backend Engineer\", \"location\": \"New York, NY\", \"min_years\": 2, \"salary_min\": 150000, \"salary_max\": 190000, \"skills\": [\"algorithms\", \"backend systems\", \"data infrastructure\", \"machine learning\", \"mlops\", \"python\", \"statistics\", \"typescript\"], \"application\": {\"status\": \"interviewing\", \"applied_date\": \"2026-09-24\", \"notes\": \"Recruiter screen done, technical next\"}}",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 5
+          },
+          "result": "{\"id\": 5, \"slug\": \"guac\", \"company\": \"Guac\", \"ai_company\": true, \"title\": \"Backend Engineer\", \"location\": \"New York, NY\", \"min_years\": 3, \"salary_min\": 150000, \"salary_max\": 250000, \"skills\": [\"agents\", \"bigquery\", \"dagster\", \"dask\", \"data pipelines\", \"docker\", \"etl\", \"fastapi\", \"gcp\", \"llms\", \"mcp servers\", \"postgresql\", \"python\", \"rag\", \"terraform\", \"tool use / function calling\"], \"application\": {\"status\": \"saved\", \"applied_date\": null, \"notes\": \"Strong match on Python, FastAPI, and RAG\"}}",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 3,
+      "cost": 0.008867,
+      "seconds": 4.51
+    },
+    {
+      "id": "300k-in-office",
+      "category": "multi-step",
+      "question": "Which postings pay up to at least $300k and require being in the office 5 days a week?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "Based on the results, here are the postings that meet both criteria:\n\n1. **Edra - Software Engineer - Back End** (ID: 3)\n   - Salary: $200k\u2013$300k\n   - Office requirement: 5 days a week in person [chunk 41]\n\n2. **Sola - Software Engineer, Backend** (ID: 11)\n   - Salary: $150k\u2013$300k  \n   - Office requirement: 5 days a week out of NYC office [chunk 178]\n\nNote: The OpenAI posting (ID: 9) has a salary reaching $445k (above $300k), but the search results don't show its office requirement information. Would you like me to check that posting for its office policy?",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "min_salary": 300000
+          },
+          "result": "[{\"id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"salary_min\": 266000, \"salary_max\": 445000, \"min_years\": null}, {\"id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"salary_min\": 200000, \"salary_max\": 300000, \"min_years\": 3}, {\"id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"salary_min\": 150000, \"salary_max\": 300000, \"min_years\": null}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "5 days a week in office"
+          },
+          "result": "[{\"chunk_id\": 72, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.606, \"text\": \"Note: this is an in-person 5 days a week, full time job in NYC.\"}, {\"chunk_id\": 41, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.507, \"text\": \"We work together in person five days a week from our offices in the West Village (New York) and Holborn (London).\"}, {\"chunk_id\": 85, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.454, \"text\": \"Software Engineer (Backend)\\n\\nNew York, NY About the job\\nLocation: New York - in office 3 days a week\"}, {\"chunk_id\": 105, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.357, \"text\": \"Wellness days - we believe you can only work your best when you feel your best, and we know working at Lorum is intense, so we offer 3 wellness days every quarter where you can take time to re-energise.\"}, {\"chunk_id\": 23, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.299, \"text\": \"Our modern NYC based office with open floor plan, stocked kitchen, and catered lunches\"}, {\"chunk_id\": 9, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.293, \"text\": \"Benefits\\n\\nExciting work environment\\nCompetitive salary & equity\\nHealth, dental, and vision insurance\\nCommuter benefits\\nPaid lunch and dinner when in the office\\nWork-life balance\\nPet-friendly office in Chelsea\\nUnlimited PTO\\n401k plan\\nVisa sponsorship if applicable\"}, {\"chunk_id\": 104, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.277, \"text\": \"Benefits\\nOpportunity to travel (if applicable)\\nFlexible vacation policy\\nPrivate Healthcare\\nEmployee stock ownership (ESOP)\\nFlexible working and autonomy\\nPay it forward days - we offer 2 annual pay it forward days where you can take time to volunteer for a charitable cause that is important to you.\"}, {\"chunk_id\": 178, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.259, \"text\": \"You\\u2019re proficient across all layers on the backend, from infra to CI/CD to DB to backend service architecture\\nYou\\u2019re fluent with the latest AI coding tools and are always looking for ways to move faster\\nYou\\u2019re open to working 5 days a week out of our office in NYC (we\\u2019ll cover relocation!)\"}, {\"chunk_id\": 50, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.254, \"text\": \"This is a role where you'll contribute to real problems from day one. We expect you to ramp up quickly, take ownership of your work, and operate with increasing independence as you learn the codebase.\"}, {\"chunk_id\": 143, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.247, \"text\": \"Software Engineer\\n\\nNew York, NYAbout the job\\nOld problem, new $25B+ market\"}, {\"chunk_id\": 163, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.226, \"text\": \"Competitive health, dental, and vision coverage\\nMental healthcare to all employees and anyone in their family through Spring Health\\nUnlimited access to financial advisors through Northstar\\nEquity Package\\nUnlimited paid time off (PTO)\\nPaid parental leave\\nFlexible work options\\nOne Medical Membership\"}, {\"chunk_id\": 185, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.224, \"text\": \"We offer comprehensive medical, dental, and vision benefits, 401(k) matching, daily meals together in the office, flexible PTO (4 weeks per year), and relocation support for candidates not already based in NYC.\\n\\nCompensation Range: $150K - $300K\"}, {\"chunk_id\": 40, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.222, \"text\": \"Competitive base salary & meaningful equity \\nTop tier health, dental, & vision plans:\\nTop plans with 100% premium coverage in the US (and a One Medical membership)\\nPrivate medical & dental coverage in the UK \\nFlexible paid time off \\nLunch provided in office most days, snacks & drinks too\\nA stipend to set up your workspace\\nA Few Details\"}, {\"chunk_id\": 24, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.212, \"text\": \"Software Engineer - Back End (New York)\\n\\nNew York, NY\\nAbout the job\\nAbout Edra\"}, {\"chunk_id\": 164, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.193, \"text\": \"Quarterly hackathons... and prizes!\\nFree team lunches every month\"}, {\"chunk_id\": 106, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.191, \"text\": \"Software Engineer, Backend\\n\\nNew York, NYAbout the job\\nAbout Mistral\"}, {\"chunk_id\": 56, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.187, \"text\": \"Want to grow at a startup where you'll have real responsibility early\"}, {\"chunk_id\": 43, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.184, \"text\": \"Software Engineer I / II\\n\\nNew York, NY About the job\\nAbout Giga\"}, {\"chunk_id\": 70, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.173, \"text\": \"What We Offer\\nFirst-hand experience building an early-stage startup\\nCompensation: $150k\\u2013$250k base + competitive equity\\nFully employer-paid healthcare (medical, dental, and vision)\\nUnlimited vacation days\\nFully covered food expenses in the office (lunch/dinner)\\nFree Equinox membership\"}, {\"chunk_id\": 168, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.172, \"text\": \"Software Engineer, Backend\\n\\nNew York, NY\\nAbout the job\\nJoin Us in Building the Future of Digital Work\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.0074010000000000005,
+      "seconds": 4.21
+    },
+    {
+      "id": "applied-oct-1-salary",
+      "category": "multi-step",
+      "question": "What's the salary range for the job I applied to on October 1?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "The salary range for the Software Engineer I / II position at Giga that you applied to on October 1st is **$160,000 - $250,000**.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "get_applications",
+          "input": {
+            "status": "applied"
+          },
+          "result": "[{\"id\": 5, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"status\": \"applied\", \"applied_date\": \"2026-10-08\", \"notes\": null}, {\"id\": 1, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"status\": \"applied\", \"applied_date\": \"2026-10-01\", \"notes\": \"Applied through the careers page\"}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 4
+          },
+          "result": "{\"id\": 4, \"slug\": \"giga\", \"company\": \"Giga\", \"ai_company\": true, \"title\": \"Software Engineer I / II\", \"location\": \"New York, NY\", \"min_years\": 1, \"salary_min\": 160000, \"salary_max\": 250000, \"skills\": [\"agent infrastructure\", \"api integrations\", \"backend engineering\", \"database design\", \"data pipelines\", \"full-stack development\", \"natural language processing\", \"slack integration\"], \"application\": {\"status\": \"applied\", \"applied_date\": \"2026-10-01\", \"notes\": \"Applied through the careers page\"}}",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 3,
+      "cost": 0.0072569999999999996,
+      "seconds": 3.47
+    },
+    {
+      "id": "mistral-salary",
+      "category": "unanswerable",
+      "question": "What's the salary range for the Mistral posting?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "The Mistral posting (Software Engineer, Backend) doesn't have a salary range listed in the data.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Mistral"
+          },
+          "result": "[{\"id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"salary_min\": null, \"salary_max\": null, \"min_years\": null}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.0043040000000000005,
+      "seconds": 1.83
+    },
+    {
+      "id": "hazel-pto",
+      "category": "unanswerable",
+      "question": "How much PTO does Hazel offer?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "Based on the data I have, Hazel's job posting doesn't include specific information about PTO. The benefits listed in the posting are:\n\n- $150\u2013250K base salary\n- 0.15\u20130.5% equity\n- Top-tier health, dental, vision\n- Hybrid in NYC\n\nThe posting doesn't mention PTO or paid time off details. You may want to ask Hazel directly during the interview process for specifics about their time-off policy.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "PTO paid time off vacation"
+          },
+          "result": "[{\"chunk_id\": 163, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.456, \"text\": \"Competitive health, dental, and vision coverage\\nMental healthcare to all employees and anyone in their family through Spring Health\\nUnlimited access to financial advisors through Northstar\\nEquity Package\\nUnlimited paid time off (PTO)\\nPaid parental leave\\nFlexible work options\\nOne Medical Membership\"}, {\"chunk_id\": 104, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.428, \"text\": \"Benefits\\nOpportunity to travel (if applicable)\\nFlexible vacation policy\\nPrivate Healthcare\\nEmployee stock ownership (ESOP)\\nFlexible working and autonomy\\nPay it forward days - we offer 2 annual pay it forward days where you can take time to volunteer for a charitable cause that is important to you.\"}, {\"chunk_id\": 185, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.396, \"text\": \"We offer comprehensive medical, dental, and vision benefits, 401(k) matching, daily meals together in the office, flexible PTO (4 weeks per year), and relocation support for candidates not already based in NYC.\\n\\nCompensation Range: $150K - $300K\"}, {\"chunk_id\": 9, \"posting_id\": 1, \"company\": \"Bevel\", \"title\": \"Backend Engineer\", \"similarity\": 0.36, \"text\": \"Benefits\\n\\nExciting work environment\\nCompetitive salary & equity\\nHealth, dental, and vision insurance\\nCommuter benefits\\nPaid lunch and dinner when in the office\\nWork-life balance\\nPet-friendly office in Chelsea\\nUnlimited PTO\\n401k plan\\nVisa sponsorship if applicable\"}, {\"chunk_id\": 162, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.335, \"text\": \"Benefits\\n\\nIn addition to cash compensation, Oso offers a Total Rewards package that includes equity grants, health benefits, and more:\"}, {\"chunk_id\": 72, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.315, \"text\": \"Note: this is an in-person 5 days a week, full time job in NYC.\"}, {\"chunk_id\": 22, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.292, \"text\": \"Generous parental leave policy\\nCommuter benefits\\nFitness benefits\\nHealthcare and Dependent care FSA benefit\\nEmployee Assistance Programs focused on mental health\\nHealthcare advocacy program for all employees\\nAccess to mental health apps\\nTeam building activities\"}, {\"chunk_id\": 70, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.289, \"text\": \"What We Offer\\nFirst-hand experience building an early-stage startup\\nCompensation: $150k\\u2013$250k base + competitive equity\\nFully employer-paid healthcare (medical, dental, and vision)\\nUnlimited vacation days\\nFully covered food expenses in the office (lunch/dinner)\\nFree Equinox membership\"}, {\"chunk_id\": 57, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.283, \"text\": \"Perks & Benefits\\n\\nCompetitive base + bonus + equity\\nCatered lunch daily\\nDinner stipend\\n$500/month wellness & commuter benefit (gym, fitness classes, mental health)\\n401(k) plan\\nMedical, dental, and vision coverage\"}, {\"chunk_id\": 21, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.268, \"text\": \"Benefits\\nCompetitive salary\\nMeaningful equity in the form of stock options\\n401(k) plan\\nDiscretionary performance bonus program\\nBiannual performance reviews\\nMedical, Dental and Vision premiums covered at 100% for you and your dependents\\nFlexible time off and paid holidays\"}, {\"chunk_id\": 83, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.249, \"text\": \"Comp & Benefits\\n\\n$150\\u2013250K base\\n0.15\\u20130.5% equity\\nTop-tier health, dental, vision\\nHybrid in NYC (ask about our pool table)\"}, {\"chunk_id\": 105, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.234, \"text\": \"Wellness days - we believe you can only work your best when you feel your best, and we know working at Lorum is intense, so we offer 3 wellness days every quarter where you can take time to re-energise.\"}, {\"chunk_id\": 39, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.219, \"text\": \"Compensation & Benefits\\n\\nEdra offers generous compensation and benefits in both New York & London:\"}, {\"chunk_id\": 145, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.216, \"text\": \"We see a world where developers never roll their own authorization again, and instead say, \\\"Just use Oso\\\" \\u2013 the same way you might say, \\\"Oh, you should just use Postgres for that.\\\" In doing so, we're creating the $25B+ authorization market.\"}, {\"chunk_id\": 124, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.212, \"text\": \"What we offer\\nWe offer a comprehensive benefits package designed to support your well-being, growth, and work-life balance. Benefits vary by country and may include healthcare coverage, parental leave, retirement plans, relocation support, wellness programs, meal and transportation allowances, and other location-specific perks.\"}, {\"chunk_id\": 167, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.193, \"text\": \"Oso is an equal opportunity employer. All applicants will be considered for employment regardless of race, color, national origin, religion, sex, age, disability, sexual orientation, gender identity, veteran or disability status.\"}, {\"chunk_id\": 125, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.192, \"text\": \"For the most up-to-date details on benefits available in your location, please refer to our Benefits page.\"}, {\"chunk_id\": 164, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.186, \"text\": \"Quarterly hackathons... and prizes!\\nFree team lunches every month\"}, {\"chunk_id\": 23, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.176, \"text\": \"Our modern NYC based office with open floor plan, stocked kitchen, and catered lunches\"}, {\"chunk_id\": 40, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.17, \"text\": \"Competitive base salary & meaningful equity \\nTop tier health, dental, & vision plans:\\nTop plans with 100% premium coverage in the US (and a One Medical membership)\\nPrivate medical & dental coverage in the UK \\nFlexible paid time off \\nLunch provided in office most days, snacks & drinks too\\nA stipend to set up your workspace\\nA Few Details\"}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Hazel"
+          },
+          "result": "[{\"id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"salary_min\": 150000, \"salary_max\": 250000, \"min_years\": null}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 6
+          },
+          "result": "{\"id\": 6, \"slug\": \"hazel\", \"company\": \"Hazel\", \"ai_company\": true, \"title\": \"Software Engineer\", \"location\": \"New York, NY\", \"min_years\": null, \"salary_min\": 150000, \"salary_max\": 250000, \"skills\": [\"amazon integrations\", \"api design\", \"go\", \"klaviyo integrations\", \"llms\", \"meta integrations\", \"query optimization\", \"react\", \"schema design\", \"shopify integrations\", \"typescript\"], \"application\": null}",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "search_posting_text",
+          "input": {
+            "posting_id": 6,
+            "query": "PTO paid time off vacation"
+          },
+          "result": "[{\"chunk_id\": 83, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.249, \"text\": \"Comp & Benefits\\n\\n$150\\u2013250K base\\n0.15\\u20130.5% equity\\nTop-tier health, dental, vision\\nHybrid in NYC (ask about our pool table)\"}, {\"chunk_id\": 79, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.164, \"text\": \"You'll work directly with the founders and customers. Code you ship today is in front of operators tomorrow.\"}, {\"chunk_id\": 84, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.137, \"text\": \"How We Hire\\n\\n15-min intro\\nFounder call\\nTechnical interview\\nOnsite \\u2014 meet the team\\nOffer\\n\\nCompensation Range: $150K - $250K\"}, {\"chunk_id\": 77, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.051, \"text\": \"What You'll Work On\\n\\nIn your first 60 days, you'll be extending Hazel's action layer \\u2014 the writes back into the systems she connects to. Think: creating product bundles in Shopify, launching A/B tests in Klaviyo, and the human-in-the-loop scaffolding that makes all of it safe.\"}, {\"chunk_id\": 82, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.049, \"text\": \"This isn't for you if\\u2026\\n\\nYou want product specs handed to you. Your manager is the customer. \\nYou're low agency\\nYou aren't excited about\"}, {\"chunk_id\": 80, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.046, \"text\": \"Who We're Looking For\\nYou've shipped a production LLM feature to real users. \\nYou've owned an API at scale: query optimization, schema design, picking the right tool for the workload. \\nStrong TypeScript experience\"}, {\"chunk_id\": 73, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.032, \"text\": \"Software Engineer\\n\\nNew York, NY About the job\\nAbout Hazel\"}, {\"chunk_id\": 75, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.026, \"text\": \"Hazel also takes action herself, proactively flagging issues and making changes directly in Shopify and the other systems she connects to, on the way to running full playbooks autonomously.\"}, {\"chunk_id\": 76, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.022, \"text\": \"We've raised more than $2M, are rapidly scaling, and serve some of the biggest consumer brands including Bogg Bag, Ultra, and OneSkin. You'll join a small, senior engineering team working directly with the founders.\"}, {\"chunk_id\": 74, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.007, \"text\": \"Hazel is the AI coworker for consumer brands. We connect to a brand's live data \\u2014 Shopify, Klaviyo, Amazon, Meta, and dozens of others \\u2014 and turn it into a teammate operators talk to every day. Ask \\\"why did repeat purchase rate drop last week?\\\" and 10 seconds later you get an answer, cited from live data.\"}, {\"chunk_id\": 81, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.005, \"text\": \"You use coding agents to do the work of a much larger team, and you can tell us where they helped and where they made things worse. \\nYou care deeply about how the product ergonomics and UX. \\nFormer or aspiring founders\"}, {\"chunk_id\": 78, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.001, \"text\": \"Beyond that:\\n\\nFull-stack product features across TypeScript/React + Go services\\nAI agent workflows: streaming LLM responses, multi-step tool use, approvals\\nIntegrations across Shopify, Klaviyo, Meta, Amazon, and more, both reading and writing\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 5,
+      "cost": 0.021761999999999997,
+      "seconds": 7.28
+    },
+    {
+      "id": "edra-interviews",
+      "category": "unanswerable",
+      "question": "What does Edra's interview process look like?",
+      "passed": false,
+      "failures": [
+        "didn't call: search_posting_text"
+      ],
+      "judge": null,
+      "answer": "I don't have information about a company called \"Edra\" in your saved job postings. Could you provide more context? For example:\n\n1. Do you have a job posting from Edra that you've saved or applied to?\n2. Could you provide the posting ID if you know it?\n3. Is this related to a specific job title you're interviewing for?\n\nOnce I can identify the posting, I can search for details about their interview process in the job posting text.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [],
+      "steps": 1,
+      "cost": 0.002384,
+      "seconds": 1.63
+    },
+    {
+      "id": "postgres-alias",
+      "category": "tricky",
+      "question": "Which postings use Postgres?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "Three postings use PostgreSQL:\n\n1. **Sola** - Software Engineer, Backend (id: 11)\n   - Salary: $150,000 - $300,000\n   - Experience: Not specified\n\n2. **Guac** - Backend Engineer (id: 5)\n   - Salary: $150,000 - $250,000\n   - Experience: 3+ years\n\n3. **Lorum** - Software Engineer (Backend) (id: 7)\n   - Salary: Not specified\n   - Experience: 3+ years",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "skill": "postgresql"
+          },
+          "result": "[{\"id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"salary_min\": 150000, \"salary_max\": 300000, \"min_years\": null}, {\"id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"salary_min\": 150000, \"salary_max\": 250000, \"min_years\": 3}, {\"id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"salary_min\": null, \"salary_max\": null, \"min_years\": 3}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.0048839999999999995,
+      "seconds": 2.57
+    },
+    {
+      "id": "golang-alias",
+      "category": "tricky",
+      "question": "Which postings use Golang?",
+      "passed": true,
+      "failures": [],
+      "judge": null,
+      "answer": "These 2 postings use Golang (Go):\n\n1. **Hazel** - Software Engineer\n   - Salary: $150,000 - $250,000\n   - Experience: Not specified\n\n2. **Mistral** - Software Engineer, Backend\n   - Salary: Not specified\n   - Experience: Not specified\n\nWould you like more details about either of these positions?",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "skill": "go"
+          },
+          "result": "[{\"id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"salary_min\": 150000, \"salary_max\": 250000, \"min_years\": null}, {\"id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"salary_min\": null, \"salary_max\": null, \"min_years\": null}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.0045579999999999996,
+      "seconds": 2.33
+    },
+    {
+      "id": "remote",
+      "category": "tricky",
+      "question": "Which postings are remote?",
+      "passed": true,
+      "failures": [],
+      "judge": {
+        "pass": true,
+        "reason": "The answer correctly states that no postings are fully remote and provides specific details about the office arrangements of various companies, which aligns with the rubric's requirement to pass if the answer says no posting is remote or that it found no remote postings.",
+        "cost": 0.00162
+      },
+      "answer": "Based on my search, **none of the postings are fully remote**. Here's what I found:\n\n- **Edra**: In-person 5 days a week from offices in the West Village (New York) or Holborn (London) [chunk 41]\n- **Guac**: In-person 5 days a week, full-time job in NYC [chunk 72]\n- **Lorum**: In-office 3 days a week in New York [chunk 85]\n- **Sola**: Open to working 5 days a week out of their NYC office [chunk 178]\n- **Mistral**: Based in NYC\n\nThe other postings don't have explicit remote policies mentioned in their text. Would you like me to get the full details on any specific postings to see if there are any other location arrangements not mentioned in the text?",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "remote"
+          },
+          "result": "[{\"chunk_id\": 108, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.28, \"text\": \"We are a dynamic, collaborative team passionate about AI and its potential to transform society. Our diverse workforce thrives in competitive environments and is committed to driving innovation. Our teams are distributed between Europe, North America, Asia and the Middle East. We are creative, low-ego and team-spirited.\"}, {\"chunk_id\": 44, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.266, \"text\": \"Giga has recently raised a $61M Series A and has several paying customers, including DoorDash. We\\u2019re building the next generation of customer experience \\u2014 real-time AI agents that can understand emotion, resolve issues instantly, and scale across the world\\u2019s largest enterprises.\"}, {\"chunk_id\": 115, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.259, \"text\": \" Partner with teams across AI Studio, Le Chat & Mistral Code to ensure consistent platform-wide experience.\"}, {\"chunk_id\": 89, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.229, \"text\": \"This role is ideal for someone who enjoys working in fast-moving environments, thrives in ambiguity, and cares deeply about building high-quality backend systems that solve real-world problems. We\\u2019re particularly looking for engineers with strong experience in distributed systems and an interest in working with Rust.\"}, {\"chunk_id\": 26, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.224, \"text\": \"We're a Series A startup, backed by Sequoia and other leading VC firms, led by Co-Founders who created and led Forward Deployed AI Engineering at Palantir, and we're growing our team in New York and London. We're a deeply technical team of engineers, AI researchers, and strategists with a high bar for talent and a shared belief that exceptional people are the foundation of everything great we'll build.\"}, {\"chunk_id\": 180, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.22, \"text\": \"You\\u2019ve worked directly on AI systems or in ML ops at scale\\nYou\\u2019re ambitious, creative, and a great communicator\"}, {\"chunk_id\": 66, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.21, \"text\": \"Collaborate directly with customers' technical teams to understand and integrate with their IT infrastructure\\nHelp define how we leverage LLMs across the product surface, from agentic workflows to natural-language interfaces over our forecasts\"}, {\"chunk_id\": 114, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.209, \"text\": \"Cross-functional Collaboration\\nCollaborate with product managers, platform engineers, and AI/ML teams to design, build, and deliver scalable model-as-a-service solutions for developers and enterprise users. \"}, {\"chunk_id\": 53, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.205, \"text\": \"Dynamic knowledge: Adding time-based knowledge (like ongoing incidents) that auto-updates from sources like status pages\\nAgent memory: Conversation awareness and recent interaction lookups so agents remember context across sessions\"}, {\"chunk_id\": 175, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.202, \"text\": \"What You'll Do\\nOwn systems that automate repetitive work across browser and desktop, handling concurrency, reliability, and observability at scale (millions of executions per month)\\nCollaborate with our CTO and ML research partners to bring state-of-the-art agentic workflows into production\"}, {\"chunk_id\": 182, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.202, \"text\": \"Leading-edge agentic AI tech, solving deep problems in partnership with the AI labs (ex. Anthropic, AWS AGI Lab)\\nSmall team, early stage, with an opportunity for outsized impact on the company\\u2019s future\"}, {\"chunk_id\": 65, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.201, \"text\": \"Build AI-powered tools and agents for internal and customer use \\u2014 exposing our data and forecasting systems via MCP servers, tool-use APIs, and similar protocols so that LLMs can reason over and act on grocery operations data\"}, {\"chunk_id\": 171, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.199, \"text\": \"If you\\u2019re interested in being on the forefront of agentic automation, we\\u2019d love to hear from you!\"}, {\"chunk_id\": 109, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.198, \"text\": \"The Role\\nWe are seeking passionate and skilled software engineers to join our new team in NYC. As a Backend Engineer, you\\u2019ll contribute to the development of the core systems powering our three main products, AI Studio, Le Chat & Mistral Code, shaping how users and developers interact with our AI platform at scale. You\\u2019ll work on building reliable, high-performance backend systems and APIs that serve millions of users and developers. Your work will directly impact the developer and user experience, making it more engaging, efficient, and intuitive. We welcome engineers from mid-level to senior and staff engineers who are eager to learn, collaborate and ship impactful products.\"}, {\"chunk_id\": 48, \"posting_id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"similarity\": 0.198, \"text\": \"Giga builds AI agents trusted by the largest B2C companies in the world. Industry leaders like DoorDash trust Giga with their most complex support and operations workflows across voice, chat, and email. If being a part of this resonates with you, please apply!\"}, {\"chunk_id\": 132, \"posting_id\": 9, \"company\": \"OpenAI\", \"title\": \"Software Engineer, Observability\", \"similarity\": 0.195, \"text\": \"Collaborate closely with engineers, researchers, user ops, and other teams across the company to build the next generation observability product\"}, {\"chunk_id\": 177, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.195, \"text\": \"What we're looking for\\nYou thrive in a fast-paced environment where you can ship fast and solve problems end-to-end\\nYou\\u2019ve built and operated distributed systems at scale, with a high standard for reliability, observability, and performance\"}, {\"chunk_id\": 119, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.188, \"text\": \" Excellent communication skills and collaborative attitude. \\n Team-oriented, low-ego mindset and curiosity for learning.\"}, {\"chunk_id\": 110, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.187, \"text\": \"What You Will Do\\n\\nDepending on your skills and field of expertise, you will be involved in key components of our technology, including:\"}, {\"chunk_id\": 68, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.181, \"text\": \"Hands-on experience building with LLMs \\u2014 tool use / function calling, RAG, agents, or evals \\u2014 and familiarity with MCP or similar protocols for connecting models to data and systems\\nExperience designing and operating data-intensive backend systems (ETL, large-scale pipelines, distributed processing)\"}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "fully remote work from home"
+          },
+          "result": "[{\"chunk_id\": 41, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.413, \"text\": \"We work together in person five days a week from our offices in the West Village (New York) and Holborn (London).\"}, {\"chunk_id\": 72, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.351, \"text\": \"Note: this is an in-person 5 days a week, full time job in NYC.\"}, {\"chunk_id\": 175, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.311, \"text\": \"What You'll Do\\nOwn systems that automate repetitive work across browser and desktop, handling concurrency, reliability, and observability at scale (millions of executions per month)\\nCollaborate with our CTO and ML research partners to bring state-of-the-art agentic workflows into production\"}, {\"chunk_id\": 153, \"posting_id\": 10, \"company\": \"Oso\", \"title\": \"Software Engineer\", \"similarity\": 0.281, \"text\": \"Build and operate infrastructure for our highly available and low latency cloud service\"}, {\"chunk_id\": 177, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.277, \"text\": \"What we're looking for\\nYou thrive in a fast-paced environment where you can ship fast and solve problems end-to-end\\nYou\\u2019ve built and operated distributed systems at scale, with a high standard for reliability, observability, and performance\"}, {\"chunk_id\": 89, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.273, \"text\": \"This role is ideal for someone who enjoys working in fast-moving environments, thrives in ambiguity, and cares deeply about building high-quality backend systems that solve real-world problems. We\\u2019re particularly looking for engineers with strong experience in distributed systems and an interest in working with Rust.\"}, {\"chunk_id\": 171, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.27, \"text\": \"If you\\u2019re interested in being on the forefront of agentic automation, we\\u2019d love to hear from you!\"}, {\"chunk_id\": 79, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.264, \"text\": \"You'll work directly with the founders and customers. Code you ship today is in front of operators tomorrow.\"}, {\"chunk_id\": 173, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.256, \"text\": \"As a backend engineer, you\\u2019ll work directly on our AI orchestration systems to enable reliable, scalable, durable workflow execution across desktop and web. You\\u2019ll collaborate with our frontend team to surface that to the user in a way that is easy and intuitive.\"}, {\"chunk_id\": 24, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.25, \"text\": \"Software Engineer - Back End (New York)\\n\\nNew York, NY\\nAbout the job\\nAbout Edra\"}, {\"chunk_id\": 85, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.25, \"text\": \"Software Engineer (Backend)\\n\\nNew York, NY About the job\\nLocation: New York - in office 3 days a week\"}, {\"chunk_id\": 20, \"posting_id\": 2, \"company\": \"Current\", \"title\": \"Software Engineer\", \"similarity\": 0.249, \"text\": \"Experience with RDBMS or NoSQL databases\\nStrong problem-solving and communication skills\\nExperience with cloud-hosted services, like AWS or GCP is a plus\"}, {\"chunk_id\": 30, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.24, \"text\": \"Build internal libraries, tooling, and interfaces that make the rest of the engineering team more productive\\nOwn your work fully: gather context, manage dependencies, and drive tasks to completion without a product manager handing you tickets\"}, {\"chunk_id\": 100, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.238, \"text\": \"Experience designing and consuming APIs (REST/gRPC/GraphQL) and integrating with other services and data stores. \\nStrong testing mindset and familiarity with CI/CD workflows. \\nClear communication skills and a collaborative approach to working with Product, Operations, and other engineers.\"}, {\"chunk_id\": 84, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.236, \"text\": \"How We Hire\\n\\n15-min intro\\nFounder call\\nTechnical interview\\nOnsite \\u2014 meet the team\\nOffer\\n\\nCompensation Range: $150K - $250K\"}, {\"chunk_id\": 168, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.234, \"text\": \"Software Engineer, Backend\\n\\nNew York, NY\\nAbout the job\\nJoin Us in Building the Future of Digital Work\"}, {\"chunk_id\": 180, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.234, \"text\": \"You\\u2019ve worked directly on AI systems or in ML ops at scale\\nYou\\u2019re ambitious, creative, and a great communicator\"}, {\"chunk_id\": 115, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.234, \"text\": \" Partner with teams across AI Studio, Le Chat & Mistral Code to ensure consistent platform-wide experience.\"}, {\"chunk_id\": 94, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.226, \"text\": \"Work closely with Security and GRC teams to ensure services meet security and compliance requirements (e.g. SOC 2, ISO 27001). \\nImplement secure coding practices, strong authentication and authorization patterns, and data protection controls. \"}, {\"chunk_id\": 178, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.226, \"text\": \"You\\u2019re proficient across all layers on the backend, from infra to CI/CD to DB to backend service architecture\\nYou\\u2019re fluent with the latest AI coding tools and are always looking for ways to move faster\\nYou\\u2019re open to working 5 days a week out of our office in NYC (we\\u2019ll cover relocation!)\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 3,
+      "cost": 0.013415,
+      "seconds": 5.43
+    },
+    {
+      "id": "compare-giga-sola",
+      "category": "open-ended",
+      "question": "Compare the Giga and Sola postings.",
+      "passed": true,
+      "failures": [],
+      "judge": {
+        "pass": true,
+        "reason": "The answer correctly states both salary ranges ($160k-$250k for Giga and $150k-$300k for Sola), correctly identifies Giga's experience requirement as \"1+ years\" (which matches the rubric's acceptable formats), and correctly does not attribute a years-of-experience requirement to Sola.",
+        "cost": 0.001933
+      },
+      "answer": "Here's a comparison of the Giga and Sola postings:\n\n| Aspect | Giga | Sola |\n|--------|------|------|\n| **Title** | Software Engineer I / II | Software Engineer, Backend |\n| **Location** | New York, NY | New York, NY |\n| **Salary Range** | $160k - $250k | $150k - $300k |\n| **Experience Required** | 1+ years | Not specified |\n| **AI Company** | Yes | Yes |\n| **Application Status** | Applied (Oct 1) | Applied (Oct 8) |\n| **Skills Required** | agent infrastructure, api integrations, backend engineering, database design, data pipelines, full-stack development, natural language processing, slack integration | ai systems, distributed systems, dynamodb, kubernetes, mlops, postgresql, python, temporal, typescript |\n\n**Key Differences:**\n- **Salary:** Sola has a higher ceiling ($300k vs $250k), though Giga has a slightly higher floor ($160k vs $150k)\n- **Experience:** Giga requires at least 1 year; Sola has no stated minimum\n- **Role scope:** Giga is full-stack focused, Sola is backend-focused\n- **Tech stack:** Giga emphasizes NLP and integrations; Sola emphasizes distributed systems, MLOps, and specific tools (Kubernetes, DynamoDB, Temporal)\n\nBoth are AI companies in New York, and you've applied to both recently.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Giga"
+          },
+          "result": "[{\"id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"salary_min\": 160000, \"salary_max\": 250000, \"min_years\": 1}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Sola"
+          },
+          "result": "[{\"id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"salary_min\": 150000, \"salary_max\": 300000, \"min_years\": null}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 4
+          },
+          "result": "{\"id\": 4, \"slug\": \"giga\", \"company\": \"Giga\", \"ai_company\": true, \"title\": \"Software Engineer I / II\", \"location\": \"New York, NY\", \"min_years\": 1, \"salary_min\": 160000, \"salary_max\": 250000, \"skills\": [\"agent infrastructure\", \"api integrations\", \"backend engineering\", \"database design\", \"data pipelines\", \"full-stack development\", \"natural language processing\", \"slack integration\"], \"application\": {\"status\": \"applied\", \"applied_date\": \"2026-10-01\", \"notes\": \"Applied through the careers page\"}}",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 11
+          },
+          "result": "{\"id\": 11, \"slug\": \"sola\", \"company\": \"Sola\", \"ai_company\": true, \"title\": \"Software Engineer, Backend\", \"location\": \"New York, NY\", \"min_years\": null, \"salary_min\": 150000, \"salary_max\": 300000, \"skills\": [\"ai systems\", \"distributed systems\", \"dynamodb\", \"kubernetes\", \"mlops\", \"postgresql\", \"python\", \"temporal\", \"typescript\"], \"application\": {\"status\": \"applied\", \"applied_date\": \"2026-10-08\", \"notes\": null}}",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 3,
+      "cost": 0.009422,
+      "seconds": 6.28
+    },
+    {
+      "id": "compare-edra-guac",
+      "category": "open-ended",
+      "question": "Which pays more, Edra or Guac, and how do their experience requirements compare?",
+      "passed": true,
+      "failures": [],
+      "judge": {
+        "pass": true,
+        "reason": "The answer correctly states that Edra pays more (with higher salaries at both ends: $200K-$300K vs $150K-$250K) and accurately notes that both companies require 3+ years of experience, matching all rubric requirements.",
+        "cost": 0.001563
+      },
+      "answer": "Based on the results:\n\n**Salary Comparison:**\n- **Edra** pays more: $200,000\u2013$300,000\n- **Guac**: $150,000\u2013$250,000\n\nEdra's minimum is $50,000 higher and its maximum is $50,000 higher.\n\n**Experience Requirements:**\nBoth companies have the **same requirement: 3 years of minimum experience**.",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Edra"
+          },
+          "result": "[{\"id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"salary_min\": 200000, \"salary_max\": 300000, \"min_years\": 3}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Guac"
+          },
+          "result": "[{\"id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"salary_min\": 150000, \"salary_max\": 250000, \"min_years\": 3}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.0050279999999999995,
+      "seconds": 2.83
+    }
+  ]
+}

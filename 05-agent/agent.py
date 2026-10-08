@@ -8,6 +8,7 @@ default it runs without memory and denies every write, so evals can't change
 the applications table; the chat in main() is a thin wrapper around it.
 """
 import json
+import os
 import time
 from datetime import date
 
@@ -21,9 +22,14 @@ from tracing import TRACE_PATH, SESSION_ID, trace
 load_dotenv()
 client = Anthropic(timeout=30)
 
-MODEL = "claude-haiku-4-5-20251001"
-INPUT_PRICE_PER_MTOK = 1.00
-OUTPUT_PRICE_PER_MTOK = 5.00
+# (input, output) USD per million tokens. AGENT_MODEL picks another model
+# without editing this file, e.g. to compare a bigger one in the evals.
+PRICES_PER_MTOK = {
+    "claude-haiku-4-5-20251001": (1.00, 5.00),
+    "claude-sonnet-5-5": (2.00, 10.00),
+}
+MODEL = os.environ.get("AGENT_MODEL", "claude-haiku-4-5-20251001")
+INPUT_PRICE_PER_MTOK, OUTPUT_PRICE_PER_MTOK = PRICES_PER_MTOK[MODEL]
 MAX_ROUNDS = 10
 MAX_COST_PER_TURN = 0.05
 # Tools that change data; the user confirms each call before it runs.
@@ -37,7 +43,10 @@ BASE_SYSTEM = (
     "posting text. Answer only from tool results, and say so when the data "
     "doesn't contain an answer. When a claim comes from search_posting_text, "
     "cite its chunk id, like [chunk 12]. "
-    "Check with a tool before saying something isn't in the data. "
+    "You don't know which companies are in my saved postings until you search, "
+    "so a company name you don't recognize may still be there. Never answer a "
+    "question about a company, posting, or application without calling a tool "
+    "first; to check a company, call search_postings with its name. "
     "Only call update_application when I tell you something changed, never on "
     "your own; if it's unclear which posting I mean, ask me first."
 )

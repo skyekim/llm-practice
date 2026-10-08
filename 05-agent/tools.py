@@ -25,7 +25,7 @@ SKILL_ALIASES = {
 
 # Must be the same model that embedded the chunks, or the vectors aren't comparable.
 EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
-TOP_K = 10
+TOP_K = 20  # was 10; 10 missed Guac's "Unlimited vacation days" (06-evals rag-k-20)
 
 
 def normalize_skill(skill: str) -> str:
@@ -41,12 +41,15 @@ def embedder():
     return SentenceTransformer(EMBEDDING_MODEL_NAME)
 
 
-def search_postings(skill=None, min_salary=None, max_years=None, ai_company=None, company=None):
+def search_postings(skill=None, min_salary=None, min_years=None, max_years=None,
+                    ai_company=None, company=None):
     """Find postings matching every filter given. All filters are optional.
 
     skill:      exact match after normalizing ("Postgres" finds "postgresql")
     min_salary: the top of the posted range reaches at least this much;
                 postings without a salary are excluded
+    min_years:  requires at least this many years; postings that don't
+                state a requirement are excluded
     max_years:  requires at most this many years; postings that don't
                 state a requirement are included
     ai_company: True or False
@@ -65,6 +68,9 @@ def search_postings(skill=None, min_salary=None, max_years=None, ai_company=None
     if min_salary is not None:
         conditions.append("p.salary_max >= %s")
         params.append(min_salary)
+    if min_years is not None:
+        conditions.append("p.min_years >= %s")
+        params.append(min_years)
     if max_years is not None:
         conditions.append("(p.min_years IS NULL OR p.min_years <= %s)")
         params.append(max_years)
@@ -77,7 +83,7 @@ def search_postings(skill=None, min_salary=None, max_years=None, ai_company=None
 
     where = "WHERE " + " AND ".join(conditions) if conditions else ""
     sql = f"""
-        SELECT p.id, c.name AS company, p.title, p.salary_min, p.salary_max
+        SELECT p.id, c.name AS company, p.title, p.salary_min, p.salary_max, p.min_years
         FROM postings p JOIN companies c ON c.id = p.company_id
         {where}
         ORDER BY p.salary_max DESC NULLS LAST, p.id
@@ -243,9 +249,9 @@ TOOLS = [
         "description": (
             "Search the user's saved job postings by optional filters; all filters "
             "given must match. Call with no filters to list every posting. "
-            "Returns each match's id, company, title, salary_min, and salary_max "
-            "(null when the posting lists no salary). Use get_posting with an id "
-            "for location, years of experience, skills, and application status."
+            "Returns each match's id, company, title, salary_min, salary_max, and "
+            "min_years (null when the posting doesn't state one). Use get_posting "
+            "with an id for location, skills, and application status."
         ),
         "input_schema": {
             "type": "object",
@@ -267,6 +273,14 @@ TOOLS = [
                         "Annual USD, e.g. 200000. Matches postings whose salary "
                         "range reaches at least this amount (salary_max >= "
                         "min_salary). Excludes postings with no listed salary."
+                    ),
+                },
+                "min_years": {
+                    "type": "integer",
+                    "description": (
+                        "Matches postings requiring at least this many years of "
+                        "experience. Postings that don't state a requirement are "
+                        "excluded."
                     ),
                 },
                 "max_years": {

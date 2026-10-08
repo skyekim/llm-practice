@@ -1,0 +1,167 @@
+{
+  "label": "judge-check-2",
+  "run_at": "2026-10-08T14:01:51",
+  "passed": 2,
+  "total": 3,
+  "pass_rate": 0.6666666666666666,
+  "by_category": {
+    "tricky": {
+      "passed": 0,
+      "total": 1
+    },
+    "open-ended": {
+      "passed": 2,
+      "total": 2
+    }
+  },
+  "cost": 0.028248,
+  "judge_cost": 0.005125,
+  "seconds": 20.66,
+  "avg_steps": 2.6666666666666665,
+  "avg_seconds": 6.886666666666667,
+  "cases": [
+    {
+      "id": "remote",
+      "category": "tricky",
+      "question": "Which postings are remote?",
+      "passed": false,
+      "failures": [
+        "judge: The answer fails to address all six postings mentioned in the rubric (Hazel, Lorum, Oso, Edra, Guac, and Sola) and does not provide a definitive statement that none of the postings are fully remote. It only discusses two postings and then asks for more information rather than answering the question based on available data."
+      ],
+      "judge": {
+        "pass": false,
+        "reason": "The answer fails to address all six postings mentioned in the rubric (Hazel, Lorum, Oso, Edra, Guac, and Sola) and does not provide a definitive statement that none of the postings are fully remote. It only discusses two postings and then asks for more information rather than answering the question based on available data.",
+        "cost": 0.001758
+      },
+      "answer": "Based on the search results, here's what I found about remote policies:\n\n**In-person only:**\n- **Edra** - Software Engineer - Back End (posting 3): \"We work together in person five days a week from our offices in the West Village (New York) and Holborn (London).\" [chunk 41]\n- **Guac** - Backend Engineer (posting 5): \"This is an in-person 5 days a week, full time job in NYC.\" [chunk 72]\n\nThe search results don't show any postings that explicitly mention being fully remote or having remote work options. Most of the results returned were about general work style rather than location policies.\n\nWould you like me to search more specifically for flexible work arrangements or get the full details of all your saved postings to see if any mention remote work in their complete descriptions?",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_posting_text",
+          "input": {
+            "query": "remote work fully remote"
+          },
+          "result": "[{\"chunk_id\": 180, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.269, \"text\": \"You\\u2019ve worked directly on AI systems or in ML ops at scale\\nYou\\u2019re ambitious, creative, and a great communicator\"}, {\"chunk_id\": 41, \"posting_id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"similarity\": 0.263, \"text\": \"We work together in person five days a week from our offices in the West Village (New York) and Holborn (London).\"}, {\"chunk_id\": 171, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.257, \"text\": \"If you\\u2019re interested in being on the forefront of agentic automation, we\\u2019d love to hear from you!\"}, {\"chunk_id\": 72, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.243, \"text\": \"Note: this is an in-person 5 days a week, full time job in NYC.\"}, {\"chunk_id\": 89, \"posting_id\": 7, \"company\": \"Lorum\", \"title\": \"Software Engineer (Backend)\", \"similarity\": 0.232, \"text\": \"This role is ideal for someone who enjoys working in fast-moving environments, thrives in ambiguity, and cares deeply about building high-quality backend systems that solve real-world problems. We\\u2019re particularly looking for engineers with strong experience in distributed systems and an interest in working with Rust.\"}, {\"chunk_id\": 177, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.227, \"text\": \"What we're looking for\\nYou thrive in a fast-paced environment where you can ship fast and solve problems end-to-end\\nYou\\u2019ve built and operated distributed systems at scale, with a high standard for reliability, observability, and performance\"}, {\"chunk_id\": 115, \"posting_id\": 8, \"company\": \"Mistral\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.227, \"text\": \" Partner with teams across AI Studio, Le Chat & Mistral Code to ensure consistent platform-wide experience.\"}, {\"chunk_id\": 69, \"posting_id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"similarity\": 0.222, \"text\": \"(Bonus) Experience in customer-facing technical roles (e.g. forward deployed engineer)\\n(Bonus) Experience deploying LLM-powered features to production at scale\"}, {\"chunk_id\": 175, \"posting_id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"similarity\": 0.222, \"text\": \"What You'll Do\\nOwn systems that automate repetitive work across browser and desktop, handling concurrency, reliability, and observability at scale (millions of executions per month)\\nCollaborate with our CTO and ML research partners to bring state-of-the-art agentic workflows into production\"}, {\"chunk_id\": 79, \"posting_id\": 6, \"company\": \"Hazel\", \"title\": \"Software Engineer\", \"similarity\": 0.22, \"text\": \"You'll work directly with the founders and customers. Code you ship today is in front of operators tomorrow.\"}]",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 2,
+      "cost": 0.005841,
+      "seconds": 10.0
+    },
+    {
+      "id": "compare-giga-sola",
+      "category": "open-ended",
+      "question": "Compare the Giga and Sola postings.",
+      "passed": true,
+      "failures": [],
+      "judge": {
+        "pass": true,
+        "reason": "The answer correctly states Giga's salary as $160K-$250K with 1+ years experience, Sola's salary as $150K-$300K with no years-of-experience requirement, and properly notes that Sola's experience is not specified rather than making up a requirement.",
+        "cost": 0.001831
+      },
+      "answer": "Here's a comparison of the Giga and Sola postings:\n\n| Aspect | Giga | Sola |\n|--------|------|------|\n| **Title** | Software Engineer I / II | Software Engineer, Backend |\n| **Location** | New York, NY | New York, NY |\n| **AI-Focused** | Yes | Yes |\n| **Salary Range** | $160K\u2013$250K | $150K\u2013$300K |\n| **Experience Required** | 1+ years | Not specified |\n| **Skills** | Agent infrastructure, API integrations, backend engineering, database design, data pipelines, full-stack development, natural language processing, Slack integration | AI systems, distributed systems, DynamoDB, Kubernetes, MLOps, PostgreSQL, Python, Temporal, TypeScript |\n| **Application Status** | Applied 2026-10-01 | Applied 2026-10-08 |\n\n**Key Differences:**\n- **Salary**: Sola has a higher ceiling ($300K vs $250K) but a lower floor ($150K vs $160K)\n- **Skills Focus**: Giga emphasizes full-stack development and NLP, while Sola focuses on distributed systems and infrastructure (Kubernetes, DynamoDB, Temporal)\n- **Experience**: Giga explicitly requires 1+ years; Sola has no stated requirement\n- **Tech Stack**: Sola specifies Python and TypeScript, while Giga is more infrastructure/integration-focused",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Giga"
+          },
+          "result": "[{\"id\": 4, \"company\": \"Giga\", \"title\": \"Software Engineer I / II\", \"salary_min\": 160000, \"salary_max\": 250000}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Sola"
+          },
+          "result": "[{\"id\": 11, \"company\": \"Sola\", \"title\": \"Software Engineer, Backend\", \"salary_min\": 150000, \"salary_max\": 300000}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 4
+          },
+          "result": "{\"id\": 4, \"slug\": \"giga\", \"company\": \"Giga\", \"ai_company\": true, \"title\": \"Software Engineer I / II\", \"location\": \"New York, NY\", \"min_years\": 1, \"salary_min\": 160000, \"salary_max\": 250000, \"skills\": [\"agent infrastructure\", \"api integrations\", \"backend engineering\", \"database design\", \"data pipelines\", \"full-stack development\", \"natural language processing\", \"slack integration\"], \"application\": {\"status\": \"applied\", \"applied_date\": \"2026-10-01\", \"notes\": \"Applied through the careers page\"}}",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 11
+          },
+          "result": "{\"id\": 11, \"slug\": \"sola\", \"company\": \"Sola\", \"ai_company\": true, \"title\": \"Software Engineer, Backend\", \"location\": \"New York, NY\", \"min_years\": null, \"salary_min\": 150000, \"salary_max\": 300000, \"skills\": [\"ai systems\", \"distributed systems\", \"dynamodb\", \"kubernetes\", \"mlops\", \"postgresql\", \"python\", \"temporal\", \"typescript\"], \"application\": {\"status\": \"applied\", \"applied_date\": \"2026-10-08\", \"notes\": null}}",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 3,
+      "cost": 0.009245,
+      "seconds": 6.2
+    },
+    {
+      "id": "compare-edra-guac",
+      "category": "open-ended",
+      "question": "Which pays more, Edra or Guac, and how do their experience requirements compare?",
+      "passed": true,
+      "failures": [],
+      "judge": {
+        "pass": true,
+        "reason": "The answer correctly identifies that Edra pays more (with higher salary ranges at both ends: $200K-$300K vs $150K-$250K) and accurately states that both positions require 3+ years of experience, matching all rubric requirements.",
+        "cost": 0.001536
+      },
+      "answer": "**Salary Comparison:**\n- **Edra** pays more: $200k\u2013$300k\n- **Guac**: $150k\u2013$250k\n\n**Experience Requirements:**\nBoth require the same experience: **3 years minimum**\n\nEdra offers a higher salary range overall, with a $50k higher ceiling ($300k vs $250k) and $50k higher floor ($200k vs $150k).",
+      "outcome": "answer",
+      "error": null,
+      "tool_calls": [
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Edra"
+          },
+          "result": "[{\"id\": 3, \"company\": \"Edra\", \"title\": \"Software Engineer - Back End\", \"salary_min\": 200000, \"salary_max\": 300000}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "search_postings",
+          "input": {
+            "company": "Guac"
+          },
+          "result": "[{\"id\": 5, \"company\": \"Guac\", \"title\": \"Backend Engineer\", \"salary_min\": 150000, \"salary_max\": 250000}]",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 3
+          },
+          "result": "{\"id\": 3, \"slug\": \"edra\", \"company\": \"Edra\", \"ai_company\": true, \"title\": \"Software Engineer - Back End\", \"location\": \"New York\", \"min_years\": 3, \"salary_min\": 200000, \"salary_max\": 300000, \"skills\": [\"api design\", \"database design\", \"data pipelines\", \"fastapi\", \"infrastructure\", \"python\", \"typescript\"], \"application\": null}",
+          "is_error": false,
+          "confirmed": null
+        },
+        {
+          "name": "get_posting",
+          "input": {
+            "posting_id": 5
+          },
+          "result": "{\"id\": 5, \"slug\": \"guac\", \"company\": \"Guac\", \"ai_company\": true, \"title\": \"Backend Engineer\", \"location\": \"New York, NY\", \"min_years\": 3, \"salary_min\": 150000, \"salary_max\": 250000, \"skills\": [\"agents\", \"bigquery\", \"dagster\", \"dask\", \"data pipelines\", \"docker\", \"etl\", \"fastapi\", \"gcp\", \"llms\", \"mcp servers\", \"postgresql\", \"python\", \"rag\", \"terraform\", \"tool use / function calling\"], \"application\": {\"status\": \"saved\", \"applied_date\": null, \"notes\": \"Strong match on Python, FastAPI, and RAG\"}}",
+          "is_error": false,
+          "confirmed": null
+        }
+      ],
+      "steps": 3,
+      "cost": 0.008036999999999999,
+      "seconds": 4.46
+    }
+  ]
+}

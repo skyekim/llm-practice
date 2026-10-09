@@ -159,7 +159,7 @@ def run_tool(block, turn: int, approve, tool_calls: list) -> dict:
 def ask(messages: list, system: str, turn: int, approve, run: dict) -> str:
     """Answer the last question in messages, calling tools until the model stops
     asking for them. Appends every reply and tool result to messages, and
-    keeps run's steps, cost, and tool_calls up to date as it goes, so they're
+    keeps run's steps, cost, tokens, and tool_calls up to date as it goes, so they're
     right even when this raises.
 
     Returns the answer. Raises TurnStopped if MAX_ROUNDS or MAX_COST_PER_TURN
@@ -171,6 +171,8 @@ def ask(messages: list, system: str, turn: int, approve, run: dict) -> str:
         cost = cost_of(resp.usage)
         run["steps"] = round_num
         run["cost"] += cost
+        run["input_tokens"] += resp.usage.input_tokens
+        run["output_tokens"] += resp.usage.output_tokens
         print(f"round {round_num}: {resp.stop_reason}, {resp.usage.input_tokens} in / "
               f"{resp.usage.output_tokens} out, ${cost:.6f}")
         trace("model_response", turn=turn, round=round_num, stop_reason=resp.stop_reason,
@@ -208,7 +210,8 @@ def run_agent(question: str, messages: list = None, system: str = BASE_SYSTEM,
 
         {"answer": str or None, "outcome": "answer" | "stopped" | "api_error" | "cancelled",
          "error": str or None, "tool_calls": [{name, input, result, is_error, confirmed}],
-         "steps": model calls, "cost": dollars, "seconds": wall time}
+         "steps": model calls, "cost": dollars, "seconds": wall time,
+         "input_tokens" and "output_tokens": summed over every model call}
 
     The defaults are for evals: a fresh history, no memories in the system
     prompt, and every write denied. The chat passes its own history, its
@@ -225,7 +228,8 @@ def run_agent(question: str, messages: list = None, system: str = BASE_SYSTEM,
     trace("user_message", turn=turn, text=question)
 
     run = {"answer": None, "outcome": "answer", "error": None,
-           "tool_calls": [], "steps": 0, "cost": 0.0, "seconds": 0.0}
+           "tool_calls": [], "steps": 0, "cost": 0.0, "seconds": 0.0,
+           "input_tokens": 0, "output_tokens": 0}
     start = time.perf_counter()
     try:
         run["answer"] = ask(messages, system, turn, approve, run)

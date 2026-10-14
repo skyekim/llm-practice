@@ -25,7 +25,8 @@ SKILL_ALIASES = {
 
 # Must be the same model that embedded the chunks, or the vectors aren't comparable.
 EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
-TOP_K = 20  # was 10; 10 missed Guac's "Unlimited vacation days" (06-evals rag-k-20)
+TOP_K = 20  # was 10; 10 missed Guac's "Unlimited vacation days" (06-evals rag-k-20).
+PER_POSTING_TOP_K = 2  # global search: guaranteed chunks from every posting, so none get crowded out
 
 
 def normalize_skill(skill: str) -> str:
@@ -123,6 +124,41 @@ def get_posting(posting_id):
     return posting
 
 
+def get_all_postings_detail():
+    """Return full details (skills, salary, years, location, application) for
+    every posting in one call. Use this instead of calling get_posting once
+    per posting when the question needs details across most or all postings."""
+    with connect() as conn:
+        postings = conn.execute(
+            """SELECT p.id, p.slug, c.name AS company, c.ai_company, p.title, p.location,
+                      p.min_years, p.salary_min, p.salary_max
+               FROM postings p JOIN companies c ON c.id = p.company_id
+               ORDER BY p.id"""
+        ).fetchall()
+
+        skills = conn.execute(
+            "SELECT posting_id, skill FROM posting_skills ORDER BY posting_id, skill"
+        ).fetchall()
+        skills_by_posting = {}
+        for row in skills:
+            skills_by_posting.setdefault(row["posting_id"], []).append(row["skill"])
+
+        applications = conn.execute(
+            """SELECT DISTINCT ON (posting_id) posting_id, status, applied_date, notes
+               FROM applications ORDER BY posting_id, id DESC"""
+        ).fetchall()
+        app_by_posting = {row["posting_id"]: row for row in applications}
+
+    for posting in postings:
+        posting["skills"] = skills_by_posting.get(posting["id"], [])
+        application = app_by_posting.get(posting["id"])
+        if application and application["applied_date"]:
+            application["applied_date"] = application["applied_date"].isoformat()
+        posting["application"] = application
+
+    return postings
+
+
 def get_applications(status=None):
     """List applications, newest first, optionally filtered by status."""
     if status is not None and status not in VALID_STATUSES:
@@ -212,25 +248,46 @@ def update_application(posting_id, status=None, applied_date=None, notes=None):
 
 
 def search_posting_text(query, posting_id=None):
-    """Return the TOP_K chunks of posting text closest in meaning to query.
+    """Return chunks of posting text closest in meaning to query.
 
-    posting_id: only search that one posting's text
+    posting_id given: the TOP_K closest chunks from that one posting.
+    posting_id omitted: searches every posting, guaranteeing each contributes
+    at least PER_POSTING_TOP_K chunks, then returns the TOP_K most similar
+    overall from that guaranteed set.
     """
     embedding = embedder().encode(query)
-    # <=> is cosine distance, so 1 - distance is cosine similarity.
-    sql = """
-        SELECT c.id AS chunk_id, c.posting_id, co.name AS company, p.title,
-               1 - (c.embedding <=> %s) AS similarity, c.text
-        FROM chunks c
-        JOIN postings p ON p.id = c.posting_id
-        JOIN companies co ON co.id = p.company_id
-    """
-    params = [embedding]
+
     if posting_id is not None:
-        sql += " WHERE c.posting_id = %s"
-        params.append(posting_id)
-    sql += " ORDER BY c.embedding <=> %s LIMIT %s"
-    params += [embedding, TOP_K]
+        sql = """
+            SELECT c.id AS chunk_id, c.posting_id, co.name AS company, p.title,
+                   1 - (c.embedding <=> %s) AS similarity, c.text
+            FROM chunks c
+            JOIN postings p ON p.id = c.posting_id
+            JOIN companies co ON co.id = p.company_id
+            WHERE c.posting_id = %s
+            ORDER BY c.embedding <=> %s LIMIT %s
+        """
+        params = [embedding, posting_id, embedding, TOP_K]
+    else:
+        # Rank each posting's own chunks first, keep only its top
+        # PER_POSTING_TOP_K, then pick the overall best from that pool. No
+        # single posting can be shut out just because others match better.
+        sql = """
+            WITH ranked AS (
+                SELECT c.id AS chunk_id, c.posting_id, co.name AS company, p.title, c.text,
+                       1 - (c.embedding <=> %s) AS similarity,
+                       ROW_NUMBER() OVER (
+                           PARTITION BY c.posting_id ORDER BY c.embedding <=> %s
+                       ) AS rnk
+                FROM chunks c
+                JOIN postings p ON p.id = c.posting_id
+                JOIN companies co ON co.id = p.company_id
+            )
+            SELECT chunk_id, posting_id, company, title, similarity, text
+            FROM ranked WHERE rnk <= %s
+            ORDER BY similarity DESC LIMIT %s
+        """
+        params = [embedding, embedding, PER_POSTING_TOP_K, TOP_K]
 
     with connect() as conn:
         rows = conn.execute(sql, params).fetchall()
@@ -343,15 +400,33 @@ TOOLS = [
         },
     },
     {
+        "name": "get_all_postings_detail",
+        "description": (
+            "Get full details (skills, salary range, years of experience, "
+            "location, and application status) for every saved posting in one "
+            "call. Use this instead of calling get_posting once per posting "
+            "when a question needs details across most or all postings (e.g. "
+            "'list every posting's salary and years', 'which postings have no "
+            "application yet'). For a single posting, use get_posting instead."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {},
+        },
+    },
+    {
         "name": "search_posting_text",
         "description": (
             "Semantic search over the full text of the job postings, for anything "
             "the structured fields don't cover: benefits, visa sponsorship, remote "
-            "policy, team, responsibilities, culture. Returns the "
-            f"{TOP_K} closest excerpts, each with chunk_id, posting_id, company, "
-            "title, similarity (higher is closer), and text. Excerpts are ranked by "
-            "meaning, so the top ones may still not answer the question; read the "
-            "text before relying on it. Cite chunk ids for claims, like [chunk 12]."
+            "policy, team, responsibilities, culture. With posting_id, returns the "
+            f"{TOP_K} closest excerpts from that one posting. Without it, searches "
+            "every posting and guarantees each contributes at least "
+            f"{PER_POSTING_TOP_K} of its own best-matching excerpts, so no posting "
+            "is missed, then returns the strongest matches overall. For an "
+            "exhaustive check of a single posting, pass its posting_id. Each result "
+            "has chunk_id, posting_id, company, title, similarity (higher is "
+            "closer), and text. Cite chunk ids for claims, like [chunk 12]."
         ),
         "input_schema": {
             "type": "object",
@@ -414,6 +489,7 @@ TOOL_FUNCTIONS = {
     "search_postings": search_postings,
     "get_posting": get_posting,
     "get_applications": get_applications,
+    "get_all_postings_detail": get_all_postings_detail,
     "search_posting_text": search_posting_text,
     "update_application": update_application,
 }
@@ -433,6 +509,7 @@ if __name__ == "__main__":
     show("search_postings(company='Brevel')", search_postings(company="Brevel"))
     show("get_posting(1)", get_posting(1))
     show("get_posting(999)", get_posting(999))
+    show("get_all_postings_detail()", get_all_postings_detail())
     show("get_applications()", get_applications())
     show("get_applications('pending')", get_applications("pending"))
     show("search_posting_text('visa sponsorship')", search_posting_text("visa sponsorship"))
